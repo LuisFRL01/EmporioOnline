@@ -10,7 +10,7 @@ class Produto extends Model
     use HasFactory;
     
     protected $fillable = [
-        'nome', 'quantidade', 'preco', 'data', 'descricao', 'estado', 'avaliacao', 'nota', 'caracteristicas',
+        'nome', 'quantidade', 'preco', 'data', 'descricao', 'estado', 'avaliacao', 'nota',
     ];
     
     public function denuncias(){
@@ -19,6 +19,10 @@ class Produto extends Model
     
     public function categorias(){
     	return this->hasMany('App\Models\Categoria');
+    }
+    
+    public function caracteristicas(){
+    	return this->hasMany('App\Models\Caracteristica');
     }
     
     public function usuario(){
