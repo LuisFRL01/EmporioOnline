@@ -47,5 +47,11 @@ class Usuario extends Authenticatable
     }
     
     public function pedidos(){
-    	return this->hasMany('App\Models\Pedido');    }
+    	return this->hasMany('App\Models\Pedido');    
+    }
+    
+    public function denuncias(){
+    	return this->hasMany('App\Models\Denuncia');
+    }
+    
 }

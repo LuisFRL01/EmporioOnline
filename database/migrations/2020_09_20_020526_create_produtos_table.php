@@ -11,7 +11,7 @@ class CreateProdutosTable extends Migration
      *
      * @return void
      */
-     //'nome', 'quantidade', 'preco', 'data', 'descricao', 'estado', 'avaliacao', 'nota', 'caracteristicas',
+     //'nome', 'quantidade', 'preco', 'data', 'descricao', 'estado', 'avaliacao', 'nota',
     public function up()
     {
         Schema::create('produtos', function (Blueprint $table) {
