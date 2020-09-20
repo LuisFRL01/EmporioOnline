@@ -12,4 +12,5 @@ class Administrador extends Model
     protected $fillable = [
         'cpf', 'nome', 'email', 'senha'
     ];
+    
 }
