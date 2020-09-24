@@ -41,17 +41,17 @@ class Usuario extends Authenticatable
     public function avaliacao(){
         return $this->hasOne('App\Models\Avaliacao');
     }
-    
+
     public function produtos(){
-    	return this->hasMany('App\Models\Produto');
+    	return $this->hasMany('App\Models\Produto');
     }
-    
+
     public function pedidos(){
-    	return this->hasMany('App\Models\Pedido');    
+    	return $this->hasMany('App\Models\Pedido');
     }
-    
+
     public function denuncias(){
-    	return this->hasMany('App\Models\Denuncia');
+    	return $this->hasMany('App\Models\Denuncia');
     }
-    
+
 }

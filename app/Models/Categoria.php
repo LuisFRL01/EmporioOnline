@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Categoria extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
          'nome',
     ];
-    
+
     public function categorias(){
-    	return this->hasMany('App\Models\Categoria');
+    	return $this->hasMany('App\Models\Categoria');
     }
-    
+
     public function administrador(){
-    	return this.belongsTo('App\Models\Administrador');
+    	return $this.belongsTo('App\Models\Administrador');
     }
 }
