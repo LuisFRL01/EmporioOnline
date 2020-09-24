@@ -13,6 +13,20 @@ class Administrador extends Model
         'cpf', 'nome', 'email', 'senha'
     ];
     
+    public static $rules = [
+    	'nome' => 'required|min:4|max:50',
+    	'cpf' => 'required|min:14|max:14',
+    	'email' => 'required|min:16|max:254|unique:administradors',
+    	'senha' => 'required|min:8|max:30'
+    ];
+    
+    public static $messages = [
+    	'nome.*' => 'O nome é um campo obrigatório, e deve ter entre 4 e 50 caracteres',
+    	'cpf.*' => 'O cpf é um campo obrigatório, e deve ter 14 caracteres considerando ponto e hifen',
+    	'email.*' => 'O email é um campo unico e obrigatório e deve ter entre 16 e 254 caracteres',
+    	'senha.*' => 'A senha pe um campo obrigatório e deve ter entre 8 e 30 caracteres'
+    ];
+    
     public function denuncias(){
     	return this->hasMany('App\Models\Denuncia');
     }
