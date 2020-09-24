@@ -14,10 +14,10 @@ class Pedido extends Model
     ];
     
     public function usuario(){
-    	return this->belongsTo('App\Models\Usuario');
+    	return $this->belongsTo('App\Models\Usuario');
     }
     
     public function produtos(){
-    	return this->hasMany('App\Models\Produto');
+    	return $this->hasMany('App\Models\Produto');
     }
 }

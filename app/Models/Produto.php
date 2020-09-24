@@ -14,26 +14,26 @@ class Produto extends Model
     ];
     
     public function denuncias(){
-    	return this->hasMany('App\Models\Denuncia');
+    	return $this->hasMany('App\Models\Denuncia');
     }
     
     public function categorias(){
-    	return this->hasMany('App\Models\Categoria');
+    	return $this->hasMany('App\Models\Categoria');
     }
     
     public function caracteristicas(){
-    	return this->hasMany('App\Models\Caracteristica');
+    	return $this->hasMany('App\Models\Caracteristica');
     }
     
     public function usuario(){
-    	return this->belongsTo('App\Models\Usuario');
+    	return $this->belongsTo('App\Models\Usuario');
     }
     
     public function pedido(){
-    	return this.belongsTo('App\Models\Pedido');
+    	return $this->belongsTo('App\Models\Pedido');
     }
     
     public function administrador(){
-    	return this.hasOne('App\Models\Administrador');
+    	return $this->hasOne('App\Models\Administrador');
     }
 }
