@@ -53,10 +53,10 @@ class Produto extends Model
     }
 
     public function pedido(){
-    	return $this.belongsTo('App\Models\Pedido');
+    	return $this->belongsTo('App\Models\Pedido');
     }
 
     public function administrador(){
-    	return $this.hasOne('App\Models\Administrador');
+    	return $this->hasOne('App\Models\Administrador');
     }
 }
