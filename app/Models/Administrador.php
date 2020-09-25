@@ -10,11 +10,11 @@ class Administrador extends Model
     use HasFactory;
 
     protected $fillable = [
-        'cpf', 'nome', 'email'
+        'cpf', 'nome', 'email', 'senha'
     ];
 
     protected $hidden = [
-        'senha',
+        'senha', 'remember_token'
     ];
 
     public static $rules = [
