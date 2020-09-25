@@ -6,9 +6,9 @@ class ValidationException extends \Exception
 {
     protected $validator;
 
-    public function _construct($validator, $text = "Erro na Validação dos Dados")
+    public function __construct($validator, $text = "Erro na Validação dos Dados")
     {
-        parent::_construct($text);
+        parent::__construct($text);
         $this->validator = $validator;
     }
 
