@@ -28,6 +28,6 @@ class Administrador extends Model
     ];
     
     public function denuncias(){
-    	return this->hasMany('App\Models\Denuncia');
+    	return $this->hasMany('App\Models\Denuncia');
     }
 }

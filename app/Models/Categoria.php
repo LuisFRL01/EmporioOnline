@@ -14,10 +14,10 @@ class Categoria extends Model
     ];
     
     public function categorias(){
-    	return this->hasMany('App\Models\Categoria');
+    	return $this->hasMany('App\Models\Categoria');
     }
     
     public function administrador(){
-    	return this.belongsTo('App\Models\Administrador');
+    	return $this->belongsTo('App\Models\Administrador');
     }
 }

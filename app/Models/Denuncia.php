@@ -14,14 +14,14 @@ class Denuncia extends Model
     ];
     
     public function usuario(){
-    	return this->belongsTo('App\Models\Usuario');
+    	return $this->belongsTo('App\Models\Usuario');
     }
     
     public function produto(){
-    	return this->belongsTo('App\Models\Produto');
+    	return $this->belongsTo('App\Models\Produto');
     }
     
     public function administrador(){
-    	return this.hasOne('App\Models\Administrador');
+    	return $this->hasOne('App\Models\Administrador');
     }
 }
