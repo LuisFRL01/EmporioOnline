@@ -13,6 +13,14 @@ class Denuncia extends Model
          'mensagem',
     ];
 
+    public static $rules = [
+        'mensagem' =>'required|min:10|max:200'
+    ];
+
+    public static $messages = [
+        'mensagem.*' => 'A mensagem é um campo obrigatório, e deve ter entre 10 e 200 caracteres'
+    ];
+
     public function usuario(){
     	return $this->belongsTo('App\Models\Usuario');
     }
