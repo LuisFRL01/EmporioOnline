@@ -2,11 +2,13 @@
 
 namespace App\Validator;
 
-public class AdministradorValidator
+use Illuminate\Support\Facades\Validator;
+
+class AdministradorValidator
 {
 	public static function validate($data){
-		$validator = \Validator::make($data, \App\Administrador::$rules, \App\Administrador::$messages);
-		if($validator->errors()->isEmpty())
+		$validator = Validator::make($data, \App\Models\Administrador::$rules, \App\Models\Administrador::$messages);
+		if(!$validator->errors()->isEmpty())
 			throw new ValidationException($validator, "Erro na validação do Administrador");
 		return $validator;
 	}

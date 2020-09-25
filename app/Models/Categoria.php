@@ -8,16 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Categoria extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
-         'nome',
+         'nome'
     ];
-    
+
+    public static $rules = [
+        'nome' =>'required|min:4|max:20'
+    ];
+
+    public static $messages = [
+        'nome.*' => 'O nome é um campo obrigatório, e deve ter entre 4 e 20 caracteres'
+    ];
+
     public function categorias(){
     	return $this->hasMany('App\Models\Categoria');
     }
-    
+
     public function administrador(){
-    	return $this->belongsTo('App\Models\Administrador');
+    	return $this->belongsTo('App\Models\Administrador');      
     }
 }
