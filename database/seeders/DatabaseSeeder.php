@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Caracteristica;
 use App\Models\Categoria;
 use Illuminate\Database\Seeder;
 
@@ -19,5 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProdutoSeeder::class);
         $this->call(CategoriaSeeder::class);
         $this->call(DenunciaSeeder::class);
+        $this->call(CaracteristicaSeeder::class);
+        $this->call(AvaliacaoSeeder::class);
     }
 }
