@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Caracteristica;
+use App\Models\Categoria;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,5 +16,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(AdministradorSeeder::class);
+        $this->call(UsuarioSeeder::class);
+        $this->call(ProdutoSeeder::class);
+        $this->call(CategoriaSeeder::class);
+        $this->call(DenunciaSeeder::class);
+        $this->call(CaracteristicaSeeder::class);
+        $this->call(AvaliacaoSeeder::class);
+        $this->call(PedidoSeeder::class);
     }
 }
