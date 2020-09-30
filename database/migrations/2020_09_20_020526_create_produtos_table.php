@@ -22,14 +22,14 @@ class CreateProdutosTable extends Migration
             $table->double('preco');
             $table->date('data');
             $table->string('descricao');
-            $table->boolean('estado');
-            $table->mediumText('avaliacao');
-            $table->double('nota');
+            $table->boolean('estado')->default(1);
+            $table->mediumText('avaliacao')->nullable();
+            $table->double('nota')->nullable();
             $table->integer('usuario_id')->unsigned();
             $table->foreign('usuario_id')->references('id')->on('usuarios');
-            $table->integer('administrador_id')->unsigned();
+            $table->integer('administrador_id')->unsigned()->nullable();
             $table->foreign('administrador_id')->references('id')->on('administradors');
-            $table->integer('pedido_id')->unsigned();
+            $table->integer('pedido_id')->unsigned()->nullable();
             $table->foreign('pedido_id')->references('id')->on('pedidos');
 
         });
