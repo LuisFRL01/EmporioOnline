@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DenunciaSeeder::class);
         $this->call(CaracteristicaSeeder::class);
         $this->call(AvaliacaoSeeder::class);
+        $this->call(PedidoSeeder::class);
     }
 }
