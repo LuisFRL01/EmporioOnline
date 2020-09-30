@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Categoria;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdministradorSeeder::class);
         $this->call(UsuarioSeeder::class);
         $this->call(ProdutoSeeder::class);
+        $this->call(CategoriaSeeder::class);
     }
 }

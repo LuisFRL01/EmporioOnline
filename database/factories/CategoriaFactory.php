@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Categoria;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\DB;
 
 class CategoriaFactory extends Factory
 {
@@ -21,8 +22,10 @@ class CategoriaFactory extends Factory
      */
     public function definition()
     {
+        $administradores = DB::select("select * from administradors");
         return [
-            //
+           'nome' => $this->faker->title,
+            'administrador_id' => rand(1, count($administradores))
         ];
     }
 }
