@@ -18,9 +18,9 @@ class CreateAvaliacaosTable extends Migration
             $table->float('nota');
             $table->text('texto');
             $table->integer('cliente_id')->unsigned();
-            $table->foreign('cliente_id')->references('id')->on('usuarios');
+            $table->foreign('cliente_id')->references('id')->on('users');
             $table->integer('vendedor_id')->unsigned();
-            $table->foreign('vendedor_id')->references('id')->on('usuarios');
+            $table->foreign('vendedor_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

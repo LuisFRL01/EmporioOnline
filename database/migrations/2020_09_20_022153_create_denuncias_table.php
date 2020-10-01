@@ -19,8 +19,8 @@ class CreateDenunciasTable extends Migration
             $table->id();
             $table->timestamps();
             $table->mediumText('mensagem');
-            $table->integer('usuario_id')->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('produto_id')->unsigned();
             $table->foreign('produto_id')->references('id')->on('produtos');
             $table->integer('administrador_id')->unsigned()->nullable();

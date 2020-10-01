@@ -21,8 +21,8 @@ class Denuncia extends Model
         'mensagem.*' => 'A mensagem é um campo obrigatório, e deve ter entre 10 e 200 caracteres'
     ];
 
-    public function usuario(){
-    	return $this->belongsTo('App\Models\Usuario');
+    public function User(){
+    	return $this->belongsTo('App\Models\User');
     }
 
     public function produto(){

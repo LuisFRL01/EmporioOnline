@@ -19,8 +19,8 @@ class CreatePedidosTable extends Migration
             $table->double('frete');
             $table->double('total');
             $table->date('data');
-            $table->integer('usuario_id')->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

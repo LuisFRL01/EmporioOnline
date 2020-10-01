@@ -48,8 +48,8 @@ class Produto extends Model
     	return $this->hasMany('App\Models\Caracteristica');
     }
 
-    public function usuario(){
-    	return $this->belongsTo('App\Models\Usuario');
+    public function User(){
+    	return $this->belongsTo('App\Models\User');
     }
 
     public function pedido(){
