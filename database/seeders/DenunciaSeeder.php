@@ -2,19 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\Administrador;
+use App\Models\Denuncia;
 use Illuminate\Database\Seeder;
 
-class AdministradorSeeder extends Seeder
+class DenunciaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-
     public function run()
     {
-        Administrador::factory()->count(50)->create();
+        Denuncia::factory()->count(20)->create();
     }
 }

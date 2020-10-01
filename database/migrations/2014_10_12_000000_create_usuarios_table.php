@@ -19,8 +19,8 @@ class CreateUsuariosTable extends Migration
             $table->string('email')->unique();
             $table->string('cpf')->unique();
             $table->string('numTelefone');
-            $table->string('cartao');
-            $table->boolean('ativo');
+            $table->string('cartao')->nullable();
+            $table->boolean('ativo')->default(1);
             $table->string('rua');
             $table->string('numeroResidencia');
             $table->string('bairro');

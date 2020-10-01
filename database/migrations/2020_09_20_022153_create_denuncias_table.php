@@ -11,7 +11,7 @@ class CreateDenunciasTable extends Migration
      *
      * @return void
      */
-     
+
      //'mensagem'
     public function up()
     {
@@ -23,7 +23,7 @@ class CreateDenunciasTable extends Migration
             $table->foreign('usuario_id')->references('id')->on('usuarios');
             $table->integer('produto_id')->unsigned();
             $table->foreign('produto_id')->references('id')->on('produtos');
-            $table->integer('administrador_id')->unsigned();
+            $table->integer('administrador_id')->unsigned()->nullable();
             $table->foreign('administrador_id')->references('id')->on('administradors');
         });
     }

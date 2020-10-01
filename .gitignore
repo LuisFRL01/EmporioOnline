@@ -11,3 +11,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+composer.phar
+composer_2.phar
+composer_3.phar
