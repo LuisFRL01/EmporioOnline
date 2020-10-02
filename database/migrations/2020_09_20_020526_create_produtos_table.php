@@ -25,6 +25,8 @@ class CreateProdutosTable extends Migration
             $table->boolean('estado')->default(1);
             $table->mediumText('avaliacao')->nullable();
             $table->double('nota')->nullable();
+            $table->integer('categoria_id')->unsigned()->nullable();
+            $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('administrador_id')->unsigned()->nullable();

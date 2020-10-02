@@ -19,8 +19,6 @@ class CreateCategoriasTable extends Migration
             $table->string('nome');
             $table->integer('administrador_id')->unsigned();
             $table->foreign('administrador_id')->references('id')->on('administradors');
-            $table->integer('produto_id')->unsigned()->nullable();
-            $table->foreign('produto_id')->references('id')->on('produtos');
             $table->integer('categoria_id')->unsigned()->nullable();
             $table->foreign('categoria_id')->references('id')->on('categorias');
 
