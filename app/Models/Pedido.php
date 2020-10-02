@@ -27,8 +27,8 @@ class Pedido extends Model
         'frete.*' => 'O frete é um campo obrigatorio'
     ];
 
-    public function usuario(){
-    	return $this->belongsTo('App\Models\Usuario');
+    public function User(){
+    	return $this->belongsTo('App\Models\User');
     }
 
     public function produtos(){

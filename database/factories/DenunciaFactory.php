@@ -23,11 +23,11 @@ class DenunciaFactory extends Factory
      */
     public function definition()
     {
-        $usuarios = DB::select("select * from usuarios");
+        $users = DB::select("select * from users");
         $produtos = DB::select("select * from produtos");
         return [
             'mensagem' => Str::random(50),
-            'usuario_id' => rand(1, count($usuarios)),
+            'user_id' => rand(1, count($users)),
             'produto_id' => rand(1, count($produtos))
         ];
     }

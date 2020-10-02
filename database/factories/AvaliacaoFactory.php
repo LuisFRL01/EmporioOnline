@@ -23,12 +23,12 @@ class AvaliacaoFactory extends Factory
      */
     public function definition()
     {
-        $usuarios = DB::select("select * from usuarios");
+        $users = DB::select("select * from users");
         return [
             'nota' => rand(0, 5),
             'texto' => Str::random(40),
-            'cliente_id' => rand(1, count($usuarios)),
-            'vendedor_id' => rand(1, count($usuarios))
+            'cliente_id' => rand(1, count($users)),
+            'vendedor_id' => rand(1, count($users))
         ];
     }
 }

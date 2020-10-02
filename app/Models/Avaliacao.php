@@ -25,10 +25,10 @@ class Avaliacao extends Model
 
 
     public function cliente(){
-        return $this->belongsTo('App\Models\Usuario');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function vendedor(){
-        return $this->belongsTo('App\Models\Usuario');
+        return $this->belongsTo('App\Models\User');
     }
 }

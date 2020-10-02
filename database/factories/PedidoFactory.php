@@ -22,7 +22,7 @@ class PedidoFactory extends Factory
      */
     public function definition()
     {
-        $usuarios = DB::select("select * from usuarios");
+        $users = DB::select("select * from users");
         $valor = rand(1, 1000);
         $frete = rand(1, 80);
         return [
@@ -30,7 +30,7 @@ class PedidoFactory extends Factory
             'frete' => $frete,
             'total' => $valor + $frete,
             'data' => date('d/m/Y H:i'),
-            'usuario_id' => rand(1, count($usuarios))
+            'user_id' => rand(1, count($users))
         ];
     }
 }
