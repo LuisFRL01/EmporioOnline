@@ -20,6 +20,36 @@
             </div>
 
             <div class="mt-4">
+                <x-jet-label value="{{ __('CPF') }}" />
+                <x-jet-input class="block mt-1 w-full" type="number" name="cpf" :value="old('cpf')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label value="{{ __('Número de telefone') }}" />
+                <x-jet-input class="block mt-1 w-full" type="number" name="numTelefone" :value="old('numTelefone')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label value="{{ __('Rua') }}" />
+                <x-jet-input class="block mt-1 w-full" type="text" name="rua" :value="old('rua')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label value="{{ __('Número da residência') }}" />
+                <x-jet-input class="block mt-1 w-full" type="text" name="numeroResidencia" :value="old('numeroResidencia')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label value="{{ __('Bairro') }}" />
+                <x-jet-input class="block mt-1 w-full" type="text" name="bairro" :value="old('bairro')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label value="{{ __('CEP') }}" />
+                <x-jet-input class="block mt-1 w-full" type="number" name="cep" :value="old('cep')" required />
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label value="{{ __('Password') }}" />
                 <x-jet-input class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
