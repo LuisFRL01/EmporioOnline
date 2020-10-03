@@ -25,13 +25,18 @@
             <x-jet-input id="password_confirmation" type="password" class="mt-1 block w-full" wire:model.defer="state.password_confirmation" autocomplete="new-password" />
             <x-jet-input-error for="password_confirmation" class="mt-2" />
         </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            @if (session()->has('success'))
+                <div class="p-3 bg-green-300 text-green-800 rounded shadow-sm">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
+
     </x-slot>
 
     <x-slot name="actions">
-        <x-jet-action-message class="mr-3" on="saved">
-            {{ __('Salvo.') }}
-        </x-jet-action-message>
-
         <x-jet-button>
             {{ __('Salvar') }}
         </x-jet-button>
