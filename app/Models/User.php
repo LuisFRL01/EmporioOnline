@@ -5,9 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -15,9 +13,7 @@ class User extends Authenticatable
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
-    use HasTeams;
     use Notifiable;
-    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -36,8 +32,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
     ];
 
     /**
@@ -73,14 +67,14 @@ class User extends Authenticatable
 
     public static $messages = [
         'name.*' => 'O nome é um campo obrigatório, e deve ter entre 4 e 50 caracteres',
-        'cpf.*' => 'O cpf é um campo obrigatório, e deve ter 11 digitos, considerando somente os numeros',
+        'cpf.*' => 'O CPF é um campo unico e obrigatório, e deve ter 11 digitos',
         'email.*' => 'O email é um campo unico e obrigatório e deve ter entre 10 e 254 caracteres',
         'password.*' => 'A senha é um campo obrigatório e deve ter entre 8 e 30 caracteres',
         'numTelefone.*' => 'O telefone deve ter 11 dígitos',
         'rua.*' => 'A rua é um campo obrigatório',
         'numeroResidencia.*' => 'O numero da residência é um campo obrigatório, e deve ter entre 1 e 6 digitos',
         'bairro.*' => 'O bairro é um campo obrigatório, e deve ter entre 3 e 30 caracteres',
-        'cep.*' => 'O cep é um campo obrigatório, e deve ter 8 digitos, considerando somente os numeros'
+        'cep.*' => 'O cep é um campo obrigatório, e deve ter 8 digitos'
     ];
 
     public function avaliacao(){
