@@ -80,6 +80,14 @@
             <x-jet-input-error for="cpf" class="mt-2" />
         </div>
 
+        <div class="col-span-6 sm:col-span-4">
+            @if (session()->has('success'))
+                <div class="p-3 bg-green-300 text-green-800 rounded shadow-sm">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
+
     </x-slot>
 
     <x-slot name="actions">

@@ -40,7 +40,7 @@
 
             <div class="col-span-6 sm:col-span-4">
                 @if (session()->has('success'))
-                <div class="p-3 bg-green-300 text-green-800 rounded shadow-sm">
+                    <div class="p-3 bg-green-300 text-green-800 rounded shadow-sm">
                         {{ session('success') }}
                     </div>
                 @endif
@@ -49,11 +49,6 @@
         </x-slot>
 
         <x-slot name="actions">
-
-            <x-jet-action-message class="mr-3" on="saved">
-                {{ __('Saved.') }}
-            </x-jet-action-message>
-
             <x-jet-button wire:loading.attr="disabled">
                 {{ __('Salvar') }}
             </x-jet-button>

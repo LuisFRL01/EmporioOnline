@@ -50,6 +50,8 @@ class UpdateUserAddressInformation extends Component
                 'cep' => $this->input['cep'],
             ])->save();
 
+            session()->flash('success', 'Os dados foram atualizados com sucesso');
+
             $this->resetErrorBag();
         } catch (ValidationException $exception) {
             return back()->withInput()->withErrors([$exception->getMessage()]);
