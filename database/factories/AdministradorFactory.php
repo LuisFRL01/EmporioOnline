@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Administrador;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 class AdministradorFactory extends Factory
 {
@@ -25,7 +26,7 @@ class AdministradorFactory extends Factory
             'cpf' => rand(10000000000, 99999999999),
             'nome' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
-            'senha' => 'password'
+            'senha' => Hash::make('password'),
         ];
     }
 }
