@@ -2,9 +2,8 @@
 
 namespace App\Actions\Fortify;
 
-use App\Models\Team;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
+use App\Validator\ValidationException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -21,10 +20,12 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-        Validator::make($input, \App\Models\User::$rules, \App\Models\User::$messages)->validate();
 
-        return DB::transaction(function () use ($input) {
-            return tap(User::create([
+        try {
+
+            Validator::make($input, \App\Models\User::$rules, \App\Models\User::$messages)->validate();
+
+            return User::create([
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'cpf' => $input['cpf'],
@@ -34,24 +35,9 @@ class CreateNewUser implements CreatesNewUsers
                 'bairro' => $input['bairro'],
                 'cep' => $input['cep'],
                 'password' => Hash::make($input['password']),
-            ]), function (User $user) {
-                $this->createTeam($user);
-            });
-        });
-    }
-
-    /**
-     * Create a personal team for the user.
-     *
-     * @param  \App\Models\User  $user
-     * @return void
-     */
-    protected function createTeam(User $user)
-    {
-        $user->ownedTeams()->save(Team::forceCreate([
-            'user_id' => $user->id,
-            'name' => explode(' ', $user->name, 2)[0]."'s Team",
-            'personal_team' => true,
-        ]));
+            ]);
+        } catch (ValidationException $exception) {
+            return back()->withInput()->withErrors([$exception->getMessage()]);
+        }
     }
 }
