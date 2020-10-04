@@ -48,7 +48,7 @@
 /******/ 		Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 	};
 /******/
-/******/ 	// produto a fake namespace object
+/******/ 	// create a fake namespace object
 /******/ 	// mode & 1: value is a module id, require it
 /******/ 	// mode & 2: merge all properties of value into the ns
 /******/ 	// mode & 4: return value when already ns object
@@ -3477,7 +3477,7 @@ module.exports = {
      * The chainable wrapper methods are:
      * `after`, `ary`, `assign`, `assignIn`, `assignInWith`, `assignWith`, `at`,
      * `before`, `bind`, `bindAll`, `bindKey`, `castArray`, `chain`, `chunk`,
-     * `commit`, `compact`, `concat`, `conforms`, `constant`, `countBy`, `produto`,
+     * `commit`, `compact`, `concat`, `conforms`, `constant`, `countBy`, `create`,
      * `curry`, `debounce`, `defaults`, `defaultsDeep`, `defer`, `delay`,
      * `difference`, `differenceBy`, `differenceWith`, `drop`, `dropRight`,
      * `dropRightWhile`, `dropWhile`, `extend`, `extendWith`, `fill`, `filter`,
@@ -3566,7 +3566,7 @@ module.exports = {
     }
 
     /**
-     * The base implementation of `_.produto` without support for assigning
+     * The base implementation of `_.create` without support for assigning
      * properties to the created object.
      *
      * @private
@@ -7295,7 +7295,7 @@ module.exports = {
      * @private
      * @param {Function} func The function to wrap.
      * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
-     * @param {Function} wrapFunc The function to produto the `func` wrapper.
+     * @param {Function} wrapFunc The function to create the `func` wrapper.
      * @param {*} placeholder The placeholder value.
      * @param {*} [thisArg] The `this` binding of `func`.
      * @param {Array} [partials] The arguments to prepend to those provided to
@@ -12736,7 +12736,7 @@ module.exports = {
 
     /**
      * Creates a function that invokes `func` with the `this` binding of the
-     * produto function and an array of arguments much like
+     * create function and an array of arguments much like
      * [`Function#apply`](http://www.ecma-international.org/ecma-262/7.0/#sec-function.prototype.apply).
      *
      * **Note:** This method is based on the
@@ -13964,7 +13964,7 @@ module.exports = {
      * _.isPlainObject({ 'x': 0, 'y': 0 });
      * // => true
      *
-     * _.isPlainObject(Object.produto(null));
+     * _.isPlainObject(Object.create(null));
      * // => true
      */
     function isPlainObject(value) {
@@ -14680,7 +14680,7 @@ module.exports = {
      *   Shape.call(this);
      * }
      *
-     * Circle.prototype = _.produto(Shape.prototype, {
+     * Circle.prototype = _.create(Shape.prototype, {
      *   'constructor': Circle
      * });
      *
@@ -15075,7 +15075,7 @@ module.exports = {
      * @example
      *
      * var object = { 'a': { 'b': 2 } };
-     * var other = _.produto({ 'a': _.produto({ 'b': 2 }) });
+     * var other = _.create({ 'a': _.create({ 'b': 2 }) });
      *
      * _.has(object, 'a');
      * // => true
@@ -15105,7 +15105,7 @@ module.exports = {
      * @returns {boolean} Returns `true` if `path` exists, else `false`.
      * @example
      *
-     * var object = _.produto({ 'a': _.produto({ 'b': 2 }) });
+     * var object = _.create({ 'a': _.create({ 'b': 2 }) });
      *
      * _.hasIn(object, 'a');
      * // => true
@@ -16636,7 +16636,7 @@ module.exports = {
      * @returns {Function} Returns the compiled template function.
      * @example
      *
-     * // Use the "interpolate" delimiter to produto a compiled template.
+     * // Use the "interpolate" delimiter to create a compiled template.
      * var compiled = _.template('hello <%= user %>!');
      * compiled({ 'user': 'fred' });
      * // => 'hello fred!'
@@ -17604,7 +17604,7 @@ module.exports = {
      * object to the destination object. If `object` is a function, then methods
      * are added to its prototype as well.
      *
-     * **Note:** Use `_.runInContext` to produto a pristine `lodash` function to
+     * **Note:** Use `_.runInContext` to create a pristine `lodash` function to
      * avoid conflicts caused by modifying the original.
      *
      * @static
@@ -17759,7 +17759,7 @@ module.exports = {
      * truthy when invoked with the arguments it receives.
      *
      * Following shorthands are possible for providing predicates.
-     * Pass an `Object` and it will be used as an parameter for `_.matches` to produto the predicate.
+     * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
      * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
      *
      * @static
@@ -17789,7 +17789,7 @@ module.exports = {
      * truthy when invoked with the arguments it receives.
      *
      * Following shorthands are possible for providing predicates.
-     * Pass an `Object` and it will be used as an parameter for `_.matches` to produto the predicate.
+     * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
      * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
      *
      * @static
