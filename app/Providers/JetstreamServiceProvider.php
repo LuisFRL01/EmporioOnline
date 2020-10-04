@@ -44,7 +44,7 @@ class JetstreamServiceProvider extends ServiceProvider
         Jetstream::defaultApiTokenPermissions(['read']);
 
         Jetstream::permissions([
-            'produto',
+            'create',
             'read',
             'update',
             'delete',
