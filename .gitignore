@@ -5,6 +5,8 @@
 /vendor
 /.idea
 .env
+.env.dusk.local
+.env.testing
 .env.backup
 .phpunit.result.cache
 Homestead.json
