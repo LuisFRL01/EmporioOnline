@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now produto something great!
+| contains the "web" middleware group. Now create something great!
 |
 */
 
@@ -20,7 +20,7 @@ Route::post('/cadastrarProduto', [\App\Http\Controllers\cadastroProdutoControlle
 Route::get('/listarProdutos', [\App\Http\Controllers\ListarProdutosController::class, 'listar']);
 
 Route::get('/', function () {
-    return view('/login');
+    return view('/welcome');
 });
 
 
