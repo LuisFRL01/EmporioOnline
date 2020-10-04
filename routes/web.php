@@ -13,9 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/cadastrarProduto', [\App\Http\Controllers\cadastroProdutoController::class, 'preparar']);
+
+Route::post('/cadastrarProduto', [\App\Http\Controllers\cadastroProdutoController::class, 'cadastrar']);
+
+Route::get('/listarProdutos', [\App\Http\Controllers\ListarProdutosController::class, 'listar']);
+
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
