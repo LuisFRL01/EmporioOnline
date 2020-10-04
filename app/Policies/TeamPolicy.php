@@ -34,7 +34,7 @@ class TeamPolicy
     }
 
     /**
-     * Determine whether the user can produto models.
+     * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
      * @return mixed
