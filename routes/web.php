@@ -20,7 +20,7 @@ Route::post('/cadastrarProduto', [\App\Http\Controllers\cadastroProdutoControlle
 Route::get('/listarProdutos', [\App\Http\Controllers\ListarProdutosController::class, 'listar']);
 
 Route::get('/', function () {
-    return view('/welcome');
+    return view('welcome');
 });
 
 
