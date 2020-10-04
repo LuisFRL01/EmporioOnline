@@ -20,7 +20,7 @@
     <label for="descricao">Descrição:</label><br>
     <input type="text" id="descricao" name="descricao"/><br>
 
-    <label><input type="radio" id="estado1" name="estado" value="1">Novo</label>
+    <label><input type="radio" id="estado1" name="estado" value="1" checked="true">Novo</label>
     <label><input type="radio" id="estado2" name="estado" value="0">Usado</label><br>
 
 
