@@ -5,7 +5,6 @@
     </head>
 
     <body>
-        @livewire('cadastro')
         @livewireScripts
     </body>
 
