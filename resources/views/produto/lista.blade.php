@@ -15,29 +15,29 @@
         <th>Preço</th>
         <th>Estado</th>
     </tr>
-    @foreach($produtos as $produto)
-        <tr>
-            <td>
-                {{$produto->nome}}
-            </td>
-            <td>
-                {{$produto->descricao}}
-            </td>
-            <td>
-                {{$produto->quantidade}}
-            </td>
-            <td>
-                {{$produto->preco}}
-            </td>
-            <td>
-                @if($produto->estado == true)
-                    Novo
-                @else
-                    Usado
-                @endif
-            </td>
-        </tr>
-    @endforeach
+        @foreach($produtos as $produto)
+            <tr>
+                <td>
+                    {{$produto->nome}}
+                </td>
+                <td>
+                    {{$produto->descricao}}
+                </td>
+                <td>
+                    {{$produto->quantidade}}
+                </td>
+                <td>
+                    {{$produto->preco}}
+                </td>
+                <td>
+                    @if($produto->estado == true)
+                        Novo
+                    @else
+                        Usado
+                    @endif
+                </td>
+            </tr>
+        @endforeach
 
 </table>
 <br>
