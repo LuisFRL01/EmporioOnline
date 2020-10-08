@@ -32,7 +32,6 @@ class ProdutoFactory extends Factory
             'nome' => $faker->productName,
             'quantidade' => rand(1, 100),
             'preco' => rand(1, 1000),
-            'data' => date('d/m/Y H:i'),
             'descricao' => "Produto de Qualidade Inigualavel no Mercado!",
             'user_id' => rand(1, count($users))
         ];

@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\DB;
 class ListarProdutosController extends Controller
 {
     public function listar(){
-        $id_user = Auth::user()->id;
-        $produtos = DB::select("select * from produtos where user_id = $id_user");
+        $produtos = Produto::all();
         return view('produto/lista', ['produtos' => $produtos]);
     }
 }
