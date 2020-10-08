@@ -3,35 +3,44 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
+use App\Models\User;
 use App\Validator\ProdutoValidator;
 use App\Validator\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
+use const http\Client\Curl\AUTH_ANY;
 
-class cadastroProdutoController extends Controller
+class editarProdutoController extends Controller
 {
-    public function preparar()
+
+    public function editar(Request $request)
     {
-        return view('produto/cadastro');
+       $produto = Produto::find($request->id);
+
+       if(Auth::user()->can('update-produto', $produto)){
+           return view('produto/editar', ['produto' => $produto]);
+       }
     }
 
-    public function cadastrar(Request $request)
+    public function atualizar(Request $request)
     {
         try {
             ProdutoValidator::validate($request->all());
-            $produto = new Produto();
+            $produto = Produto::find($request->id);
             $produto->nome = $request->nome;
             $produto->quantidade = $request->quantidade;
             $produto->preco = $request->preco;
             $produto->descricao = $request->descricao;
             $produto->estado = $request->estado;
-            $produto->user_id = Auth::user()->id;
-            $produto->save();
+            $produto->user_id = $request->user_id;
+            $produto->update();
 
             return redirect('/listarProdutos');
+
         } catch(ValidationException $exception){
-            return redirect('cadastrarProduto')
+            return redirect('/editarProduto/'. $request->id)
                 ->withErrors($exception->getValidator())
                 ->withInput();
         }
