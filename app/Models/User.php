@@ -74,7 +74,7 @@ class User extends Authenticatable
         'rua.*' => 'A rua é um campo obrigatório',
         'numeroResidencia.*' => 'O numero da residência é um campo obrigatório, e deve ter entre 1 e 6 digitos',
         'bairro.*' => 'O bairro é um campo obrigatório, e deve ter entre 3 e 30 caracteres',
-        'cep.*' => 'O cep é um campo obrigatório, e deve ter 8 digitos'
+        'cep.*' => 'O CEP é um campo obrigatório, e deve ter 8 digitos'
     ];
 
     public function avaliacao(){
