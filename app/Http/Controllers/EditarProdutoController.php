@@ -19,9 +19,12 @@ class editarProdutoController extends Controller
     {
        $produto = Produto::find($request->id);
 
-       if(Auth::user()->can('update-produto', $produto)){
+       if(Gate::allows('update-produto', $produto)){
            return view('produto/editar', ['produto' => $produto]);
+       } else if(Gate::denies('update-produto', $produto)){
+           abort('403', 'Não Autorizado');
        }
+
     }
 
     public function atualizar(Request $request)
