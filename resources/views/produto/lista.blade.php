@@ -54,7 +54,7 @@
             </table>
         </div>
     </div>
-    <x-jet-button class="ml-0" onclick="window.location.href='/cadastrarProduto'">
+    <x-jet-button class="ml-0" onclick="window.location.href='/cadastrarProduto'" name="cadastrar">
         {{ __('Novo Produto') }}
     </x-jet-button>
     <x-jet-secondary-button class="ml-0" onclick="window.location.href='/dashboard'">

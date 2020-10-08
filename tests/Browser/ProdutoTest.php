@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class cadastrarProdutoTest extends DuskTestCase
+class produtoTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
@@ -35,7 +35,16 @@ class cadastrarProdutoTest extends DuskTestCase
                 ->type('quantidade', 10)
                 ->type('preco', 1000)
                 ->type('descricao', 'Melhor processador para publico gamer da AMD INTEL')
-                ->press('Cadastrar')
+                ->press('cadastrar')
+                ->assertPathIs('/listarProdutos');
+        });
+    }
+    public function testAlterarProduto(){
+        $this->testCadastroProduto();
+        $this->browse(function (Browser $browser)  {
+            $browser->clickLink('Editar')
+                ->type('nome', 'AMD Intel Core I7')
+                ->press('alterar')
                 ->assertPathIs('/listarProdutos');
         });
     }
