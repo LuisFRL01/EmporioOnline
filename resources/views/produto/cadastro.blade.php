@@ -43,7 +43,7 @@
 
 
                     <br>
-                    <x-jet-button type="submit" class="ml-0">
+                    <x-jet-button type="submit" class="ml-0" name="cadastrar">
                         {{ __('Cadastrar') }}
                     </x-jet-button>
 

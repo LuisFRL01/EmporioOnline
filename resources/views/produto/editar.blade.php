@@ -50,7 +50,7 @@
 
 
                     <br>
-                    <x-jet-button type="submit" class="ml-0">
+                    <x-jet-button type="submit" class="ml-0" name="alterar">
                         {{ __('Editar') }}
                     </x-jet-button>
 
