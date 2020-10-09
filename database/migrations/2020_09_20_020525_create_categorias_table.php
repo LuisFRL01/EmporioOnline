@@ -18,7 +18,7 @@ class CreateCategoriasTable extends Migration
             $table->timestamps();
             $table->string('nome');
             $table->integer('administrador_id')->unsigned();
-            $table->foreign('administrador_id')->references('id')->on('administradors');
+            $table->foreign('administrador_id')->references('id')->on('users');
             $table->integer('categoria_id')->unsigned()->nullable();
             $table->foreign('categoria_id')->references('id')->on('categorias');
 

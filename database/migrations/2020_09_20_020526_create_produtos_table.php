@@ -28,7 +28,7 @@ class CreateProdutosTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('administrador_id')->unsigned()->nullable();
-            $table->foreign('administrador_id')->references('id')->on('administradors');
+            $table->foreign('administrador_id')->references('id')->on('users');
             $table->integer('pedido_id')->unsigned()->nullable();
             $table->foreign('pedido_id')->references('id')->on('pedidos');
 
