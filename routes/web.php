@@ -13,17 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/cadastrarProduto', [\App\Http\Controllers\cadastroProdutoController::class, 'preparar']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/cadastrarProduto', [\App\Http\Controllers\cadastroProdutoController::class, 'preparar']);
 
 Route::post('/cadastrarProduto', [\App\Http\Controllers\cadastroProdutoController::class, 'cadastrar'])->name('cadastrarProduto');
 
 Route::post('/atualizarProduto', [\App\Http\Controllers\editarProdutoController::class, 'atualizar'])->name('atualizarProduto');
 
-Route::get('/editarProduto/{id}', [\App\Http\Controllers\editarProdutoController::class, 'editar']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/editarProduto/{id}', [\App\Http\Controllers\editarProdutoController::class, 'editar']);
 
-Route::get('/deletarProduto/{id}', [\App\Http\Controllers\deletarProdutoController::class, 'deletar']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/deletarProduto/{id}', [\App\Http\Controllers\deletarProdutoController::class, 'deletar']);
 
-Route::get('/listarProdutos', [\App\Http\Controllers\ListarProdutosController::class, 'listar'])->name('produtos');
+Route::middleware(['auth:sanctum', 'verified'])->get('/listarProdutos', [\App\Http\Controllers\ListarProdutosController::class, 'listar'])->name('produtos');
 
 Route::get('/', function () {
     return view('welcome');
