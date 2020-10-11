@@ -7,58 +7,66 @@
 
 
     <x-jet-validation-errors class="mb-4"/>
-    <div class="py-10">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-10">
-            <table class="table-auto">
-                <thead>
-                <tr>
-                    <th class="px-4 py-2">Nome</th>
-                    <th class="px-4 py-2">Descrição</th>
-                    <th class="px-4 py-2">Quantidade</th>
-                    <th class="px-4 py-2">Preço</th>
-                    <th class="px-4 py-2">Estado</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($produtos as $produto)
-                    @can('read-produto', $produto)
+    <div class="container">
+        <div class="py-5 px-20">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-20">
+                @if(!empty($produtos))
+                    <table class="table-auto">
+                        <thead>
                         <tr>
-                            <td class="border px-4 py-2">
-                                {{$produto->nome}}
-                            </td>
-                            <td class="border px-4 py-2">
-                                {{$produto->descricao}}
-                            </td>
-                            <td class="border px-4 py-2">
-                                {{$produto->quantidade}}
-                            </td>
-                            <td class="border px-4 py-2">
-                                {{$produto->preco}}
-                            </td>
-                            <td class="border px-4 py-2">
-                                @if($produto->estado == true)
-                                    Novo
-                                @else
-                                    Usado
-                                @endif
-                            </td>
-                            <td class="border px-4 py-2">
-                                <a href="/editarProduto/{{$produto->id}}">Editar</a> -
-                                <a href="/deletarProduto/{{$produto->id}}">Deletar</a>
-                            </td>
+                            <th class="px-4 py-2">Nome</th>
+                            <th class="px-4 py-2">Descrição</th>
+                            <th class="px-4 py-2">Quantidade</th>
+                            <th class="px-4 py-2">Preço</th>
+                            <th class="px-4 py-2">Estado</th>
                         </tr>
-                    @endcan
-                @endforeach
-                </tbody>
-
-            </table>
+                        </thead>
+                        <tbody>
+                        @foreach($produtos as $produto)
+                            <tr>
+                                <td class="border px-4 py-2">
+                                    {{$produto->nome}}
+                                </td>
+                                <td class="border px-4 py-2">
+                                    {{$produto->descricao}}
+                                </td>
+                                <td class="border px-4 py-2">
+                                    {{$produto->quantidade}}
+                                </td>
+                                <td class="border px-4 py-2">
+                                    {{$produto->preco}}
+                                </td>
+                                <td class="border px-4 py-2">
+                                    @if($produto->estado == true)
+                                        Novo
+                                    @else
+                                        Usado
+                                    @endif
+                                </td>
+                                <td class="border px-4 py-2">
+                                    <a href="/editarProduto/{{$produto->id}}">Editar</a> -
+                                    <a href="/deletarProduto/{{$produto->id}}">Deletar</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                @endif
+            </div>
+        </div>
+    </div>
+    <div class="py-3">
+        <div class="bg-white px-4 py-5 justify-between border-t border-gray-200 sm:px-6">
+            {{ $produtos->links() }}
         </div>
     </div>
     <x-jet-button class="ml-0" onclick="window.location.href='/cadastrarProduto'" name="cadastrar">
         {{ __('Novo Produto') }}
     </x-jet-button>
-    <x-jet-secondary-button class="ml-0" onclick="window.location.href='/dashboard'">
+    <x-jet-secondary-button class="mlgit config --global user.name "FIRST_NAME LAST_NAME"-0" onclick="window.location.href='/dashboard'">
         {{__('Voltar')}}
     </x-jet-secondary-button>
+    <div class="bg-white px-4 py-15 justify-between border-t border-gray-200 sm:px-6">
+    </div>
 
 </x-app-layout>

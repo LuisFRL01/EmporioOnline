@@ -26,7 +26,7 @@
 
                     <div>
                         <x-jet-label class="mt-3" value="{{ __('Preço') }}"/>
-                        <x-jet-input class="block mt-1 w-full" type="number" name="preco" :value="old('preco')" required
+                        <x-jet-input class="block mt-1 w-full" type="number" step="any" name="preco" :value="old('preco')" required
                                      autofocus/>
                     </div>
 
