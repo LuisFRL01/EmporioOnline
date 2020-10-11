@@ -22,10 +22,10 @@ class CategoriaFactory extends Factory
      */
     public function definition()
     {
-        $administradores = DB::select("select * from administradors");
+        $administradores = DB::select("select * from users");
         return [
            'nome' => $this->faker->title,
-            'administrador_id' => rand(1, count($administradores))
+            'administrador_id' => rand(50, count($administradores))
         ];
     }
 }

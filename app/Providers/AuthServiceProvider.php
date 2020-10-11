@@ -37,5 +37,13 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('delete-produto', function ($user, $produto){
             return $user->id == $produto->user_id;
         });
+
+        /*Gate::define('read-categoria', function ($admin, $categoria){
+            return $admin->id == $categoria->administrador_id;
+         });
+ 
+         Gate::define('delete-categoria', function ($admin, $categoria){
+             return $admin->id == $categoria->administrador_id;
+         });*/
     }
 }

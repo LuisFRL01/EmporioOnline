@@ -29,6 +29,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/deletarProduto/{id}', [de
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/listarProdutos', [listarProdutosController::class, 'listar'])->name('produtos');
 
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/perfilAdmin', [\App\Http\Controllers\PerfilAdministradorController::class, 'show'])->name('perfilAdmin');
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/cadastroCategoria', [\App\Http\Controllers\CadastroCategoriaController::class, 'show']);
+
+Route::post('/cadastroCategoria', [\App\Http\Controllers\CadastroCategoriaController::class, 'cadastrar'])->name('cadastroCategoria');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/listaCategorias', [\App\Http\Controllers\ListaCategoriasController::class, 'show'])->name('categorias');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/deletarCategoria/{id}', [\App\Http\Controllers\DeletaCategoriaController::class, 'deletar']);
+
 Route::get('/', function () {
     return view('welcome');
 });

@@ -1,8 +1,18 @@
 <x-app-layout>
     <x-slot name="header">
-        <h1 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Produtos') }}
-        </h1>
+        <div style="position: relative;">
+            <h1 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Produtos') }}
+            </h1>
+            <div style="position: absolute; right: 0; top: 0;">
+                <x-jet-button class="ml-0" onclick="window.location.href='/cadastrarProduto'" name="cadastrar">
+                    {{ __('Novo Produto') }}
+                </x-jet-button>
+                <x-jet-secondary-button class="ml-0" onclick="window.location.href='/dashboard'">
+                    {{__('Voltar')}}
+                </x-jet-secondary-button>
+            </div>
+        </div>
     </x-slot>
 
 
@@ -59,14 +69,6 @@
         <div class="bg-white px-4 py-5 justify-between border-t border-gray-200 sm:px-6">
             {{ $produtos->links() }}
         </div>
-    </div>
-    <x-jet-button class="ml-0" onclick="window.location.href='/cadastrarProduto'" name="cadastrar">
-        {{ __('Novo Produto') }}
-    </x-jet-button>
-    <x-jet-secondary-button class="mlgit config --global user.name "FIRST_NAME LAST_NAME"-0" onclick="window.location.href='/dashboard'">
-        {{__('Voltar')}}
-    </x-jet-secondary-button>
-    <div class="bg-white px-4 py-15 justify-between border-t border-gray-200 sm:px-6">
     </div>
 
 </x-app-layout>

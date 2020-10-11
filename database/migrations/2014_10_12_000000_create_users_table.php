@@ -18,18 +18,21 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('cpf')->unique();
-            $table->string('numTelefone');
-            $table->string('cartao')->nullable();
+            $table->string('numTelefone')->nullable();
+            $table->string('cartao')->nullable()->nullable();
             $table->boolean('ativo')->default(1);
-            $table->string('rua');
-            $table->string('numeroResidencia');
-            $table->string('bairro');
-            $table->string('cep');
+            $table->string('rua')->nullable();
+            $table->string('numeroResidencia')->nullable();
+            $table->string('bairro')->nullable();
+            $table->string('cep')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('tipo');
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
+            //$table->integer('userable_id')->nullable();
+            //$table->string('userable_type')->nullable();
             $table->timestamps();
         });
     }
