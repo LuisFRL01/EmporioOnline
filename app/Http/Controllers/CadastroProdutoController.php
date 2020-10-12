@@ -26,8 +26,7 @@ class cadastroProdutoController extends Controller
             $produto->preco = $request->preco;
             $produto->descricao = $request->descricao;
             $produto->estado = $request->estado;
-            $produto->user_id = Auth::user()->id;
-            $produto->save();
+            Auth::user()->produtos()->save($produto);
 
             return redirect('/listarProdutos');
         } catch(ValidationException $exception){

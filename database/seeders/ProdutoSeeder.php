@@ -15,5 +15,6 @@ class ProdutoSeeder extends Seeder
     public function run()
     {
         Produto::factory()->count(50)->create();
+        Produto::factory()->count(20)->create(['user_id' => '101']);
     }
 }

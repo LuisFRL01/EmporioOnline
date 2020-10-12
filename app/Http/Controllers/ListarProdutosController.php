@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
-class ListarProdutosController extends Controller
+class listarProdutosController extends Controller
 {
     public function listar(){
-        $produtos = Produto::all();
+        $produtos = Produto::where('user_id', '=', Auth::user()->id)->orderBy('id', 'desc')->paginate(5);
         return view('produto/lista', ['produtos' => $produtos]);
     }
+
 }
