@@ -15,8 +15,8 @@
         </div>
     </x-slot>
 
-
     <x-jet-validation-errors class="mb-4"/>
+    
     <div class="container">
         <div class="py-5 px-20">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-20">

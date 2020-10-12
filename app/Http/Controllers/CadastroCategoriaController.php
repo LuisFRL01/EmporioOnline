@@ -7,12 +7,15 @@ use App\Validator\CategoriaValidator;
 use App\Validator\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class CadastroCategoriaController extends Controller
 {
     public function show()
     {
-        return view('categoria/cadastro');
+        $categorias = Categoria::all();
+        return view('categoria/cadastro', ['categorias' => $categorias]);
     }
 
     public function cadastrar(Request $request)
@@ -23,10 +26,15 @@ class CadastroCategoriaController extends Controller
             $categoria = new Categoria();
             $categoria->nome = $request->nome;
             $categoria->administrador_id = Auth::user()->id;
+
+            $categoriaPai = $request->input('categoriaMenu');
+            if ($categoriaPai != 'Categoria Pai') {
+                $categoria->categoria_id = $categoriaPai;
+            }
             $categoria->save();
 
             return redirect('/listaCategorias');
-        } catch(ValidationException $exception){
+        } catch (ValidationException $exception) {
             return redirect('cadastroCategoria')
                 ->withErrors($exception->getValidator())
                 ->withInput();
