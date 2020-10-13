@@ -14,6 +14,7 @@ class DeleteUser implements DeletesUsers
      */
     public function delete($user)
     {
-        $user->delete();
+        $user->ativo = false;
+        $user->save();
     }
 }

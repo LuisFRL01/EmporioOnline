@@ -12,10 +12,19 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <form action="{{ route('cadastroCategoria') }}" method="post">
                     @csrf
-                    <div class="m-2">
-                        <x-jet-label class="mt-3 ml-3" value="{{ __('Nome') }}"/>
-                        <x-jet-input class="block mt-1 ml-3 w-full" type="text" name="nome" required/>
+                    <div class="m-3">
+                        <x-jet-label class="mt-3 ml-2" value="{{ __('Nome') }}"/>
+                        <x-jet-input class="block mt-1 ml-2 w-full" type="text" name="nome" required/>
                     </div>
+
+                    <div class="m-5">
+                        <select name="categoriaMenu" id="categoriaMenu" class="bg-white border appearance-none border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                            <option>Categoria Pai</option>
+                              @foreach($categorias as $categoria)
+                                  <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
+                              @endforeach
+                          </select>
+                     </div>
 
                     <x-jet-button type="submit" class="m-5" name="cadastrar">
                         {{ __('Cadastrar') }}
