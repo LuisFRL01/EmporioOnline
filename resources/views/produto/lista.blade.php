@@ -16,7 +16,7 @@
     </x-slot>
 
     <x-jet-validation-errors class="mb-4"/>
-    
+
     <div class="container">
         <div class="py-5 px-20">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-20">
@@ -53,9 +53,10 @@
                                         Usado
                                     @endif
                                 </td>
-                                <td class="border px-4 py-2">
+                                <td align="center" class="border px-4 py-2">
                                     <a href="/editarProduto/{{$produto->id}}">Editar</a> -
-                                    <a href="/deletarProduto/{{$produto->id}}">Deletar</a>
+                                    <a href="/deletarProduto/{{$produto->id}}">Deletar</a> -
+                                    <a href="/produto/{{$produto->id}}">Pagina</a>
                                 </td>
                             </tr>
                         @endforeach
