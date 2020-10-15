@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cadastroProdutoController;
 use App\Http\Controllers\deletarProdutoController;
 use App\Http\Controllers\editarProdutoController;
+use App\Http\Controllers\ExibeProdutoController;
 use App\Http\Controllers\listarProdutosController;
 
 /*
@@ -28,6 +29,8 @@ Route::middleware(['auth:sanctum', 'verified', 'check.user'])->get('/editarProdu
 Route::middleware(['auth:sanctum', 'verified', 'check.user'])->get('/deletarProduto/{id}', [deletarProdutoController::class, 'deletar']);
 
 Route::middleware(['auth:sanctum', 'verified', 'check.user'])->get('/listarProdutos', [listarProdutosController::class, 'listar'])->name('produtos');
+
+Route::get('/produto/{id}', [ExibeProdutoController::class, 'show']);
 
 
 Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/cadastroCategoria', [\App\Http\Controllers\CadastroCategoriaController::class, 'show']);
