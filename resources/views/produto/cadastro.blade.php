@@ -20,13 +20,15 @@
 
                     <div>
                         <x-jet-label class="mt-3" value="{{ __('Quantidade') }}"/>
-                        <x-jet-input class="block mt-1 w-full" type="number" name="quantidade" :value="old('quantidade')" required
+                        <x-jet-input class="block mt-1 w-full" type="number" name="quantidade"
+                                     :value="old('quantidade')" required
                                      autofocus/>
                     </div>
 
                     <div>
                         <x-jet-label class="mt-3" value="{{ __('Preço') }}"/>
-                        <x-jet-input class="block mt-1 w-full" type="number" step="any" name="preco" :value="old('preco')" required
+                        <x-jet-input class="block mt-1 w-full" type="number" step="any" name="preco"
+                                     :value="old('preco')" required
                                      autofocus/>
                     </div>
 
@@ -39,6 +41,17 @@
                     <div class="mt-3">
                         <label><input type="radio" id="estado1" name="estado" value="1" checked="true"> Novo </label>
                         <label><input type="radio" id="estado2" name="estado" value="0"> Usado</label>
+                    </div>
+
+                    <div class="mt-3">
+                        <select
+                            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="categoria", name="categoria">
+                            @foreach($categorias as $categoria)
+                                <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
+                            @endforeach
+
+                        </select>
                     </div>
 
 
