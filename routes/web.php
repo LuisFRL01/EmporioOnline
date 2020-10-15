@@ -38,6 +38,11 @@ Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/lista
 
 Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/deletarCategoria/{id}', [\App\Http\Controllers\DeletaCategoriaController::class, 'deletar']);
 
+Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/listaUsuarios', [\App\Http\Controllers\ListaUsuariosController::class, 'show'])->name('usuarios');
+
+Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/desativarUsuario/{id}', [\App\Http\Controllers\DesativaUsuarioController::class, 'desativar']);
+
+
 Route::get('/', function () {
     return view('welcome');
 });
