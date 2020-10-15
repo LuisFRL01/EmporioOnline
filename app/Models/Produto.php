@@ -36,8 +36,8 @@ class Produto extends Model
     	return $this->hasMany('App\Models\Denuncia');
     }
 
-    public function categorias(){
-    	return $this->hasMany('App\Models\Categoria');
+    public function categoria(){
+    	return $this->hasOne('App\Models\Categoria');
     }
 
     public function caracteristicas(){
