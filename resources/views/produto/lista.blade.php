@@ -47,7 +47,7 @@
                                     {{$produto->preco}}
                                 </td>
                                 <td class="border px-4 py-2">
-                                    @if($produto->estado == true)
+                                    @if($produto->estado)
                                         Novo
                                     @else
                                         Usado
