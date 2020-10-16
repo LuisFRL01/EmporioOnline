@@ -21,7 +21,19 @@
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-white">
             <header class="bg-blue-500">
-                <div class="container mx-auto px-6 py-3">
+                @if (Route::has('login'))
+                    <div class="hidden ml-6 pt-2 sm:block">
+                        @auth
+                            <a href="{{ url('/dashboard') }}" class="text-sm text-black underline">Home</a>
+                        @else
+                            <a href="{{ route('login') }}" class="text-sm text-black underline">Login</a>
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="ml-4 text-sm text-black underline">Register</a>
+                            @endif
+                        @endif
+                    </div>
+                @endif
+                <div class="container mx-auto px-6 pb-3">
                     <div class="w-full text-black md:text-center text-3xl font-semibold">
                         Empório Online
                     </div>
