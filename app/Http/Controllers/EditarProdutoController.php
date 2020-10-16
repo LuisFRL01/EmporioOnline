@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
-use App\Models\User;
 use App\Validator\ProdutoValidator;
 use App\Validator\ValidationException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Validator;
-use const http\Client\Curl\AUTH_ANY;
 
 class editarProdutoController extends Controller
 {

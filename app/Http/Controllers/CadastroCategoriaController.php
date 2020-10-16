@@ -7,8 +7,6 @@ use App\Validator\CategoriaValidator;
 use App\Validator\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class CadastroCategoriaController extends Controller
 {
