@@ -24,7 +24,7 @@
                 @if (Route::has('login'))
                     <div class="hidden ml-6 pt-2 sm:block">
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="text-sm text-black underline">Home</a>
+                            <a href="{{ url('/') }}" class="text-sm text-black underline">Home</a>
                         @else
                             <a href="{{ route('login') }}" class="text-sm text-black underline">Login</a>
                             @if (Route::has('register'))

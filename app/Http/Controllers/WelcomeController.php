@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
+use Illuminate\Support\Facades\DB;
 
 class WelcomeController extends Controller
 {
     public function show(){
-        $produtos = Produto::all()->take(8);
+        $produtos = DB::select("select * from produtos ORDER BY id DESC LIMIT 8");
         return view('welcome', ['produtos' => $produtos]);
     }
 }
