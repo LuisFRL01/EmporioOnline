@@ -6,6 +6,9 @@ use App\Http\Controllers\deletarProdutoController;
 use App\Http\Controllers\editarProdutoController;
 use App\Http\Controllers\ExibeProdutoController;
 use App\Http\Controllers\listarProdutosController;
+use App\Http\Controllers\AdicionarPedidoController;
+use App\Http\Controllers\ExibePedidoController;
+use App\Http\Controllers\CadastroCategoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +38,7 @@ Route::get('/produto/{id}', [ExibeProdutoController::class, 'show']);
 
 Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/cadastroCategoria', [\App\Http\Controllers\CadastroCategoriaController::class, 'show']);
 
-Route::post('/cadastroCategoria', [\App\Http\Controllers\CadastroCategoriaController::class, 'cadastrar'])->name('cadastroCategoria');
+Route::post('/cadastroCategoria', [CadastroCategoriaController::class, 'cadastrar'])->name('cadastroCategoria');
 
 Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/listaCategorias', [\App\Http\Controllers\ListaCategoriasController::class, 'show'])->name('categorias');
 
@@ -45,6 +48,9 @@ Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/lista
 
 Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/desativarUsuario/{id}', [\App\Http\Controllers\DesativaUsuarioController::class, 'desativar']);
 
+Route::post('/adicionar', [AdicionarPedidoController::class, 'adicionar'])->name('adicionar');
+
+Route::get('/pedido', [ExibePedidoController::class, 'exibe'])->name('pedido');
 
 Route::get('/', function () {
     return view('welcome');
