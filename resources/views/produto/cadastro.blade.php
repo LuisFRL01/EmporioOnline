@@ -40,8 +40,6 @@
                         <label><input type="radio" id="estado1" name="estado" value="1" checked="true"> Novo </label>
                         <label><input type="radio" id="estado2" name="estado" value="0"> Usado</label>
                     </div>
-
-
                     <br>
                     <x-jet-button type="submit" class="ml-0" name="cadastrar">
                         {{ __('Cadastrar') }}

@@ -50,12 +50,5 @@
             <h3 class="text-gray-600 text-2xl font-medium">Descrição</h3>
             <p class="mt-2 text-gray-800">{{$produto->descricao}}</p>
         </div>
-
-        <footer class="bg-gray-200">
-            <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-                <a class="text-xl font-bold text-gray-500 hover:text-gray-400">Empório Online</a>
-                <p class="py-2 text-gray-500 sm:py-0">Todos os direitos reservados</p>
-            </div>
-        </footer>
     </div>
 </x-app-layout-produto>

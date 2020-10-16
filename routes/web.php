@@ -1,11 +1,18 @@
 <?php
 
+use App\Http\Controllers\CadastroCategoriaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cadastroProdutoController;
+use App\Http\Controllers\DeletaCategoriaController;
 use App\Http\Controllers\deletarProdutoController;
+use App\Http\Controllers\DesativaUsuarioController;
 use App\Http\Controllers\editarProdutoController;
 use App\Http\Controllers\ExibeProdutoController;
+use App\Http\Controllers\ListaCategoriasController;
 use App\Http\Controllers\listarProdutosController;
+use App\Http\Controllers\ListaUsuariosController;
+use App\Http\Controllers\PesquisaProdutoController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,26 +37,25 @@ Route::middleware(['auth:sanctum', 'verified', 'check.user'])->get('/deletarProd
 
 Route::middleware(['auth:sanctum', 'verified', 'check.user'])->get('/listarProdutos', [listarProdutosController::class, 'listar'])->name('produtos');
 
+
 Route::get('/produto/{id}', [ExibeProdutoController::class, 'show']);
 
 
-Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/cadastroCategoria', [\App\Http\Controllers\CadastroCategoriaController::class, 'show']);
+Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/cadastroCategoria', [CadastroCategoriaController::class, 'show']);
 
-Route::post('/cadastroCategoria', [\App\Http\Controllers\CadastroCategoriaController::class, 'cadastrar'])->name('cadastroCategoria');
+Route::post('/cadastroCategoria', [CadastroCategoriaController::class, 'cadastrar'])->name('cadastroCategoria');
 
-Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/listaCategorias', [\App\Http\Controllers\ListaCategoriasController::class, 'show'])->name('categorias');
+Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/listaCategorias', [ListaCategoriasController::class, 'show'])->name('categorias');
 
-Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/deletarCategoria/{id}', [\App\Http\Controllers\DeletaCategoriaController::class, 'deletar']);
+Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/deletarCategoria/{id}', [DeletaCategoriaController::class, 'deletar']);
 
-Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/listaUsuarios', [\App\Http\Controllers\ListaUsuariosController::class, 'show'])->name('usuarios');
+Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/listaUsuarios', [ListaUsuariosController::class, 'show'])->name('usuarios');
 
-Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/desativarUsuario/{id}', [\App\Http\Controllers\DesativaUsuarioController::class, 'desativar']);
+Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/desativarUsuario/{id}', [DesativaUsuarioController::class, 'desativar']);
 
+Route::get('/', [WelcomeController::class, 'show']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/pesquisaProduto', [PesquisaProdutoController::class, 'show'])->name('pesquisaProduto');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
