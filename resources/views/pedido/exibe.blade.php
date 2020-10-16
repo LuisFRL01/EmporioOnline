@@ -57,7 +57,7 @@
                 <div class="border rounded-md max-w-md w-full px-4 py-3">
                     @foreach (Session::get('itens') as $k => $item )
                         <div class="flex items-center justify-between">
-                            <h3 class="text-gray-700 font-medium">Subtotal: <b>{{$item['subtotal']}} R$</b></h3>
+                            <h3 class="text-gray-700 font-medium">Subtotal: <b>{{$item['preco'] * $item['quantidade']}} R$</b></h3>
                         </div>
                         <div class="flex justify-between mt-6">
                             <div class="flex">
@@ -73,6 +73,7 @@
                             </div>
                             <span class="text-gray-600">R${{$item['preco']}}</span>
                         </div>
+                        <br>
                     @endforeach
                 </div>
             </div>
