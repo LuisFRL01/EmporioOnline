@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produto;
 use Illuminate\Support\Facades\DB;
 
 class WelcomeController extends Controller

@@ -24,7 +24,8 @@
                 @if (Route::has('login'))
                     <div class="hidden ml-6 pt-2 sm:block">
                         @auth
-                            <a href="{{ url('/') }}" class="text-sm text-black underline">Home</a>
+                            <a href="{{ url('dashboard') }}" class="text-sm text-black underline">Home</a>
+                            <a href="{{ url('/') }}" class="text-sm text-black underline">Pagina Inicial</a>
                         @else
                             <a href="{{ route('login') }}" class="text-sm text-black underline">Login</a>
                             @if (Route::has('register'))
@@ -45,7 +46,7 @@
                         </span>
                         <form action="{{ route('pesquisaProduto') }}" method="get">
                             <div class="flex mb-4">
-                                <input name="search" class="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline" type="text" placeholder="Procurar">
+                                <input required name="search" class="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline" type="text" placeholder="Procurar">
                                 <div class="flex ml-6">
                                     <button type="submit" class="flex items-center pl-10 pr-4 py-2 bg-black text-white text-sm uppercase rounded">
                                         <span>Pesquisar</span>
@@ -57,8 +58,6 @@
                     </div>
                 </div>
             </header>
-
-            <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>

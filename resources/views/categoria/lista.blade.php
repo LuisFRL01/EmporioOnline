@@ -56,5 +56,4 @@
     <x-jet-secondary-button class="m-8" onclick="window.location.href='/dashboard'">
         {{__('Voltar')}}
     </x-jet-secondary-button>
-
 </x-app-layout>

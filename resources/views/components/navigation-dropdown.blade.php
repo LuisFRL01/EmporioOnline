@@ -16,6 +16,9 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                     @if ( Auth::user()->tipo == 'user')
+                        <x-jet-nav-link href="{{ url('/') }}">
+                            {{ __('Página Inicial') }}
+                        </x-jet-nav-link>
                         <x-jet-nav-link href="{{route('produtos')}}" :active="request()->routeIs('produtos')">
                             {{ __('Produtos') }}
                         </x-jet-nav-link>
