@@ -31,8 +31,6 @@ class CreateUsersTable extends Migration
             $table->string('tipo');
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
-            //$table->integer('userable_id')->nullable();
-            //$table->string('userable_type')->nullable();
             $table->timestamps();
         });
     }
