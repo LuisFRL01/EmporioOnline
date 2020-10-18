@@ -31,6 +31,9 @@
                             {{ __('Usuários') }}
                         </x-jet-nav-link>
                     @endif
+                    <x-jet-nav-link href="{{ route('profile.show') }}">
+                        {{ __('Perfil') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -55,20 +58,7 @@
                         @endif
                     </x-slot>
 
-
                     <x-slot name="content">
-                        <!-- Account Management -->
-                        <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Gerenciar Conta') }}
-                        </div>
-
-                        <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                            {{ __('Perfil') }}
-                        </x-jet-dropdown-link>
-
-                        <div class="border-t border-gray-100"></div>
-
-                        <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
@@ -120,16 +110,9 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <!-- Account Management -->
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Perfil') }}
                 </x-jet-responsive-nav-link>
-
-                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                    <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
-                        {{ __('API Tokens') }}
-                    </x-jet-responsive-nav-link>
-                @endif
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
