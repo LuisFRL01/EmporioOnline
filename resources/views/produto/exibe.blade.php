@@ -10,8 +10,8 @@
                 <div class="md:flex md:items-center">
                     <div class="w-full h-64 md:w-1/2 lg:h-96">
                         <img class="h-full w-full rounded-md object-cover max-w-lg mx-auto"
-                             src="https://images.unsplash.com/photo-1578262825743-a4e402caab76?ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80"
-                             alt="Nike Air">
+                             src={{ asset($produto->photo_url)}}
+                             alt="ProdutoImg">
                     </div>
                     <div class="w-full max-w-lg mx-auto mt-5 md:ml-8 md:mt-0 md:w-1/2">
                         <div align="right">

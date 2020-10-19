@@ -31,6 +31,7 @@ class CreateProdutosTable extends Migration
             $table->foreign('administrador_id')->references('id')->on('users');
             $table->integer('pedido_id')->unsigned()->nullable();
             $table->foreign('pedido_id')->references('id')->on('pedidos');
+            $table->string('photo_url');
         });
     }
 

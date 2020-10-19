@@ -29,6 +29,7 @@ class ProdutoFactory extends Factory
         $categorias = DB::select("select * from categorias");
         $faker = \Faker\Factory::create();
         $faker->addProvider(new \Bezhanov\Faker\Provider\Commerce($faker));
+        $faker->addProvider(new \Bezhanov\Faker\Provider\Placeholder($faker));
 
         return [
             'nome' => $faker->productName,
@@ -36,7 +37,8 @@ class ProdutoFactory extends Factory
             'preco' => rand(1, 1000),
             'descricao' => "Produto de Qualidade Inigualavel no Mercado!",
             'user_id' => rand(1, count($users)),
-            'categoria_id' => rand(1, count($categorias))
+            'categoria_id' => rand(1, count($categorias)),
+            'photo_url' => $faker->placeholder('1024x768', 'png')
         ];
     }
 }

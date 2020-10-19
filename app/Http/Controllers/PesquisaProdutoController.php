@@ -9,7 +9,7 @@ class PesquisaProdutoController extends Controller
 {
     public function show(Request $request)
     {
-        if($request->categoria != 'Categorias'){
+        if ($request->categoria != 'Categorias') {
             $produtos = DB::select("select * from produtos where LOWER(nome) like LOWER('%{$request->search}%') 
             and categoria_id = $request->categoria");
         } else {
