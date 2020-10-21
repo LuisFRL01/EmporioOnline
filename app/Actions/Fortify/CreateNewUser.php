@@ -35,6 +35,7 @@ class CreateNewUser implements CreatesNewUsers
                 'bairro' => $input['bairro'],
                 'cep' => $input['cep'],
                 'password' => Hash::make($input['password']),
+                'tipo' => 'user'
             ]);
         } catch (ValidationException $exception) {
             return back()->withInput()->withErrors([$exception->getMessage()]);

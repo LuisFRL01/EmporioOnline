@@ -30,6 +30,14 @@
                         <x-jet-nav-link href="{{route('usuarios')}}" :active="request()->routeIs('usuarios')">
                             {{ __('Usuários') }}
                         </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{route('denuncias')}}" :active="request()->routeIs('denuncias')">
+                            {{ __('Denúncias') }}
+                        </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{route('todosProdutos')}}" :active="request()->routeIs('todosProdutos')">
+                            {{ __('Todos os produtos') }}
+                        </x-jet-nav-link>
                     @endif
                     <x-jet-nav-link href="{{ route('profile.show') }}">
                         {{ __('Perfil') }}
@@ -37,7 +45,6 @@
                 </div>
             </div>
 
-            <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">

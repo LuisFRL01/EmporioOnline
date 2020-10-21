@@ -56,7 +56,7 @@ class User extends Authenticatable
     public static $rules = [
         'name' => 'required|min:4|max:50',
         'cpf' => 'required|integer|digits:11',
-        'email' => 'required|min:10|max:254|unique:administradors',
+        'email' => 'required|min:10|max:254',
         'password' => 'required|min:8|max:30',
         'numTelefone' => 'required|integer|digits:11',
         'rua' => 'required',

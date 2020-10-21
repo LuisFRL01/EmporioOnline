@@ -59,7 +59,6 @@
                     <x-jet-secondary-button class="ml-0" onclick="window.location.href='/listarProdutos'">
                         {{__('Cancelar')}}
                     </x-jet-secondary-button>
-
                 </form>
             </div>
         </div>
