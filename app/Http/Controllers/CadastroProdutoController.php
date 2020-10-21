@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Produto;
 use App\Validator\ProdutoValidator;
 use App\Validator\ValidationException;
@@ -12,7 +13,8 @@ class cadastroProdutoController extends Controller
 {
     public function preparar()
     {
-        return view('produto/cadastro');
+        $categorias = Categoria::all();
+        return view('produto/cadastro', ['categorias' => $categorias]);
     }
 
     public function cadastrar(Request $request)
@@ -26,6 +28,13 @@ class cadastroProdutoController extends Controller
             $produto->preco = $request->preco;
             $produto->descricao = $request->descricao;
             $produto->estado = $request->estado;
+            
+            $categoria = $request->input('categoriaMenu');
+            if ($categoria != 'Categoria') {
+                $produto->categoria_id = $categoria;
+            } else {
+                throw new ValidationException('Escolha uma categoria');
+            }
 
             $name = $request->file('photo_url')->getClientOriginalName();
 
