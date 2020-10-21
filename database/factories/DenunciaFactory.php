@@ -28,6 +28,7 @@ class DenunciaFactory extends Factory
         return [
             'mensagem' => Str::random(50),
             'user_id' => rand(1, count($users)),
+            'administrador_id' => rand(51, count($users)),
             'produto_id' => rand(1, count($produtos))
         ];
     }

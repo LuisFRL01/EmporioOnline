@@ -13,14 +13,18 @@ class Produto extends Model
         'nome', 'quantidade', 'preco', 'data', 'descricao', 'estado', 'avaliacao', 'nota',
     ];
 
+    protected $appends = [
+        'photo_url',
+    ];
+
     public static $rules = [
         'nome' => 'required|min:4|max:50',
         'quantidade' => 'required|min:1|max:5',
         'preco' => 'required|min:1|max:6',
         'descricao' =>'required|min:10|max:200',
         'estado' => 'required',
-        'nota' =>'numeric|between:0,5|max:1'
-
+        'nota' =>'numeric|between:0,5|max:1',
+        'photo_url' => 'required|image|mimes:jpg,png,jpeg'
     ];
 
     public static $messages = [
@@ -30,6 +34,7 @@ class Produto extends Model
         'descricao.*' => 'A descrição é um campo obrigatório, e deve ter entre 10 e 200 caracteres',
         'estado.*' => 'O estado é um atributo obrigatório',
         'avaliacao.*' => 'A avaliacao é um campo obrigatório, e deve ter entre 10 e 200 caracteres',
+        'A imagem deve ser do tipo jpg, png ou jpeg'
     ];
 
     public function denuncias(){

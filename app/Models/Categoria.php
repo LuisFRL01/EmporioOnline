@@ -14,11 +14,11 @@ class Categoria extends Model
     ];
 
     public static $rules = [
-        'nome' =>'required|min:4|max:20'
+        'nome' =>'required|min:4|max:20|unique:categorias'
     ];
 
     public static $messages = [
-        'nome.*' => 'O nome é um campo obrigatório, e deve ter entre 4 e 20 caracteres'
+        'nome.*' => 'O nome é um campo obrigatório, único e deve ter entre 4 e 20 caracteres'
     ];
 
     public function categorias(){

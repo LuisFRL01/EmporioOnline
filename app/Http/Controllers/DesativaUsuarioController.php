@@ -12,7 +12,12 @@ class DesativaUsuarioController extends Controller
     {
         $usuario = User::find($request->id);
 
-        $usuario->ativo = false;
+        if ($usuario->ativo == 1) {
+            $usuario->ativo = false;
+        } else {
+            $usuario->ativo = true;
+        }
+
         $usuario->save();
 
         return redirect('/listaUsuarios');

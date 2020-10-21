@@ -3,34 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
-use App\Models\User;
 use App\Validator\ProdutoValidator;
 use App\Validator\ValidationException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Validator;
-use const http\Client\Curl\AUTH_ANY;
 
 class editarProdutoController extends Controller
 {
 
     public function editar(Request $request)
     {
-       $produto = Produto::find($request->id);
+        $produto = Produto::find($request->id);
 
-       if(Gate::allows('update-produto', $produto)){
-           return view('produto/editar', ['produto' => $produto]);
-       } else if(Gate::denies('update-produto', $produto)){
-           abort('403', 'Não Autorizado');
-       }
-
+        if (Gate::allows('update-produto', $produto)) {
+            return view('produto/editar', ['produto' => $produto]);
+        } else if (Gate::denies('update-produto', $produto)) {
+            abort('403', 'Não Autorizado');
+        }
     }
 
     public function atualizar(Request $request)
     {
         try {
             ProdutoValidator::validate($request->all());
+
             $produto = Produto::find($request->id);
             $produto->nome = $request->nome;
             $produto->quantidade = $request->quantidade;
@@ -38,12 +34,21 @@ class editarProdutoController extends Controller
             $produto->descricao = $request->descricao;
             $produto->estado = $request->estado;
             $produto->user_id = $request->user_id;
+
+            $name = $request->file('photo_url')->getClientOriginalName();
+
+            $path = $request->file('photo_url')->storeAs(
+                'produtosImg',
+                $name
+            );
+
+            $produto->photo_url = $path;
+
             $produto->update();
 
             return redirect('/listarProdutos');
-
-        } catch(ValidationException $exception){
-            return redirect('/editarProduto/'. $request->id)
+        } catch (ValidationException $exception) {
+            return redirect('/editarProduto/' . $request->id)
                 ->withErrors($exception->getValidator())
                 ->withInput();
         }

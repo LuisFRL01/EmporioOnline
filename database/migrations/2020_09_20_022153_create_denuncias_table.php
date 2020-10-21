@@ -25,6 +25,7 @@ class CreateDenunciasTable extends Migration
             $table->foreign('produto_id')->references('id')->on('produtos');
             $table->integer('administrador_id')->unsigned()->nullable();
             $table->foreign('administrador_id')->references('id')->on('users');
+            $table->boolean('resolvido')->default(1);
         });
     }
 

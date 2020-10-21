@@ -8,7 +8,6 @@ use App\Validator\ProdutoValidator;
 use App\Validator\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 
 class cadastroProdutoController extends Controller
 {
@@ -22,6 +21,7 @@ class cadastroProdutoController extends Controller
     {
         try {
             ProdutoValidator::validate($request->all());
+
             $produto = new Produto();
             $produto->nome = $request->nome;
             $produto->quantidade = $request->quantidade;
@@ -29,10 +29,17 @@ class cadastroProdutoController extends Controller
             $produto->descricao = $request->descricao;
             $produto->estado = $request->estado;
             $produto->categoria_id = $request->categoria;
+            $name = $request->file('photo_url')->getClientOriginalName();
+            $path = $request->file('photo_url')->storeAs(
+                'produtosImg',
+                $name
+            );
+
+            $produto->photo_url = $path;
             Auth::user()->produtos()->save($produto);
 
             return redirect('/listarProdutos');
-        } catch(ValidationException $exception){
+        } catch (ValidationException $exception) {
             return redirect('cadastrarProduto')
                 ->withErrors($exception->getValidator())
                 ->withInput();

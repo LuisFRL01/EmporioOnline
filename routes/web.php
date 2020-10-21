@@ -1,52 +1,83 @@
 <?php
 
+use App\Http\Controllers\CadastroCategoriaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cadastroProdutoController;
+use App\Http\Controllers\DeletaCategoriaController;
 use App\Http\Controllers\deletarProdutoController;
+use App\Http\Controllers\DesativaUsuarioController;
 use App\Http\Controllers\editarProdutoController;
+use App\Http\Controllers\ExibeProdutoController;
+use App\Http\Controllers\ListaCategoriasController;
 use App\Http\Controllers\listarProdutosController;
+use App\Http\Controllers\AdicionarPedidoController;
+use App\Http\Controllers\DenunciaAnuncioController;
+use App\Http\Controllers\EditaCategoriaController;
+use App\Http\Controllers\ExibePedidoController;
+use App\Http\Controllers\ListaDenunciaController;
+use App\Http\Controllers\ListaTodosProdutosController;
+use App\Http\Controllers\ListaUsuariosController;
+use App\Http\Controllers\PesquisaProdutoController;
+use App\Http\Controllers\ResolveDenunciaController;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\RemoverPedidoController;
+use App\Http\Controllers\FinalizarPedidoController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::middleware(['auth:sanctum', 'verified', 'check.user'])->group(function () {
 
-Route::middleware(['auth:sanctum', 'verified', 'check.user'])->get('/cadastrarProduto', [cadastroProdutoController::class, 'preparar']);
+    Route::get('/cadastrarProduto', [cadastroProdutoController::class, 'preparar']);
 
-Route::post('/cadastrarProduto', [cadastroProdutoController::class, 'cadastrar'])->name('cadastrarProduto');
+    Route::post('/cadastrarProduto', [cadastroProdutoController::class, 'cadastrar'])->name('cadastrarProduto');
 
-Route::post('/atualizarProduto', [editarProdutoController::class, 'atualizar'])->name('atualizarProduto');
+    Route::post('/atualizarProduto', [editarProdutoController::class, 'atualizar'])->name('atualizarProduto');
 
-Route::middleware(['auth:sanctum', 'verified', 'check.user'])->get('/editarProduto/{id}', [editarProdutoController::class, 'editar']);
+    Route::get('/editarProduto/{id}', [editarProdutoController::class, 'editar']);
 
-Route::middleware(['auth:sanctum', 'verified', 'check.user'])->get('/deletarProduto/{id}', [deletarProdutoController::class, 'deletar']);
+    Route::get('/deletarProduto/{id}', [deletarProdutoController::class, 'deletar']);
 
-Route::middleware(['auth:sanctum', 'verified', 'check.user'])->get('/listarProdutos', [listarProdutosController::class, 'listar'])->name('produtos');
+    Route::get('/listarProdutos', [listarProdutosController::class, 'listar'])->name('produtos');
 
+    Route::get('/denunciaAnuncio/{id}', [DenunciaAnuncioController::class, 'show']);
 
-Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/cadastroCategoria', [\App\Http\Controllers\CadastroCategoriaController::class, 'show']);
-
-Route::post('/cadastroCategoria', [\App\Http\Controllers\CadastroCategoriaController::class, 'cadastrar'])->name('cadastroCategoria');
-
-Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/listaCategorias', [\App\Http\Controllers\ListaCategoriasController::class, 'show'])->name('categorias');
-
-Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/deletarCategoria/{id}', [\App\Http\Controllers\DeletaCategoriaController::class, 'deletar']);
-
-Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/listaUsuarios', [\App\Http\Controllers\ListaUsuariosController::class, 'show'])->name('usuarios');
-
-Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->get('/desativarUsuario/{id}', [\App\Http\Controllers\DesativaUsuarioController::class, 'desativar']);
-
-
-Route::get('/', function () {
-    return view('welcome');
+    Route::post('/denunciaAnuncio', [DenunciaAnuncioController::class, 'sendDenuncia'])->name('denunciaAnuncio');
 });
 
+Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->group(function () {
+
+    Route::get('/cadastroCategoria', [CadastroCategoriaController::class, 'show']);
+
+    Route::post('/cadastroCategoria', [CadastroCategoriaController::class, 'cadastrar'])->name('cadastroCategoria');
+
+    Route::get('/listaCategorias', [ListaCategoriasController::class, 'show'])->name('categorias');
+
+    Route::get('/editaCategoria/{id}', [EditaCategoriaController::class, 'show']);
+
+    Route::post('/atualizaCategoria', [EditaCategoriaController::class, 'update'])->name('atualizaCategoria');
+
+    Route::get('/listaUsuarios', [ListaUsuariosController::class, 'show'])->name('usuarios');
+
+    Route::get('/desativaUsuario/{id}', [DesativaUsuarioController::class, 'desativar']);
+
+    Route::get('/listaDenuncias', [ListaDenunciaController::class, 'show'])->name('denuncias');
+
+    Route::get('/listaTodoProdutos', [ListaTodosProdutosController::class, 'show'])->name('todosProdutos');
+
+    Route::get('/resolveDenuncia/{id}', [ResolveDenunciaController::class, 'resolver']);
+});
+
+Route::get('/produto/{id}', [ExibeProdutoController::class, 'show']);
+
+Route::post('/adicionarPedido', [AdicionarPedidoController::class, 'adicionar'])->name('adicionarPedido');
+
+Route::get('/removerPedido/{produto_id}', [RemoverPedidoController::class, 'remover'])->name('removerPedido');
+
+Route::get('/finalizarPedido', [FinalizarPedidoController::class, 'finalizar'])->name('finalizarPedido');
+
+Route::get('/pedido', [ExibePedidoController::class, 'exibe'])->name('pedido');
+
+Route::get('/pesquisaProduto', [PesquisaProdutoController::class, 'show'])->name('pesquisaProduto');
+
+Route::get('/', [WelcomeController::class, 'show']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

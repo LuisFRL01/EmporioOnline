@@ -16,6 +16,9 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                     @if ( Auth::user()->tipo == 'user')
+                        <x-jet-nav-link href="{{ url('/') }}">
+                            {{ __('Página Inicial') }}
+                        </x-jet-nav-link>
                         <x-jet-nav-link href="{{route('produtos')}}" :active="request()->routeIs('produtos')">
                             {{ __('Produtos') }}
                         </x-jet-nav-link>
@@ -27,11 +30,21 @@
                         <x-jet-nav-link href="{{route('usuarios')}}" :active="request()->routeIs('usuarios')">
                             {{ __('Usuários') }}
                         </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{route('denuncias')}}" :active="request()->routeIs('denuncias')">
+                            {{ __('Denúncias') }}
+                        </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{route('todosProdutos')}}" :active="request()->routeIs('todosProdutos')">
+                            {{ __('Todos os produtos') }}
+                        </x-jet-nav-link>
                     @endif
+                    <x-jet-nav-link href="{{ route('profile.show') }}">
+                        {{ __('Perfil') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
-            <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -52,20 +65,7 @@
                         @endif
                     </x-slot>
 
-
                     <x-slot name="content">
-                        <!-- Account Management -->
-                        <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Gerenciar Conta') }}
-                        </div>
-
-                        <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                            {{ __('Perfil') }}
-                        </x-jet-dropdown-link>
-
-                        <div class="border-t border-gray-100"></div>
-
-                        <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
@@ -117,16 +117,9 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <!-- Account Management -->
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Perfil') }}
                 </x-jet-responsive-nav-link>
-
-                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                    <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
-                        {{ __('API Tokens') }}
-                    </x-jet-responsive-nav-link>
-                @endif
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

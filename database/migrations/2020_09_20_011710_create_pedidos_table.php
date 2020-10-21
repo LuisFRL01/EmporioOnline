@@ -15,8 +15,6 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->double('valor');
-            $table->double('frete');
             $table->double('total');
             $table->date('data');
             $table->integer('user_id')->unsigned();

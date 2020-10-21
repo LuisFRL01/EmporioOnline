@@ -23,8 +23,11 @@ class CategoriaFactory extends Factory
     public function definition()
     {
         $administradores = DB::select("select * from users");
+        $faker = \Faker\Factory::create();
+        $faker->addProvider(new \Bezhanov\Faker\Provider\Commerce($faker));
+
         return [
-           'nome' => $this->faker->title,
+           'nome' => $faker->department(1),
             'administrador_id' => rand(50, count($administradores))
         ];
     }

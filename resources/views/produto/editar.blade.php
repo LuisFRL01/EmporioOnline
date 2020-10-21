@@ -10,7 +10,7 @@
     <div class="py-20">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <form action="{{ route('atualizarProduto') }}" method="post">
+                <form action="{{ route('atualizarProduto') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" value="{{$produto->id}}">
                     <input type="hidden" name="user_id" value="{{$produto->user_id}}">
@@ -43,12 +43,20 @@
                     </div>
 
                     <div class="mt-3">
-                        <label><input type="radio" id="estado1" name="estado" value="1" checked="true"> Novo
-                        </label>
+                        <label><input type="radio" id="estado1" name="estado" value="1" checked="true"> Novo </label>
                         <label><input type="radio" id="estado2" name="estado" value="0"> Usado</label>
                     </div>
-
-
+                    <div class="mt-3 ml-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="file" name="photo_url" placeholder="Choose image" id="photo_url">
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
                     <br>
                     <x-jet-button type="submit" class="ml-0" name="alterar">
                         {{ __('Editar') }}
@@ -57,7 +65,6 @@
                     <x-jet-secondary-button class="ml-0" onclick="window.location.href='/listarProdutos'">
                         {{__('Cancelar')}}
                     </x-jet-secondary-button>
-
                 </form>
             </div>
         </div>

@@ -29,9 +29,7 @@ class CreateProdutosTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('administrador_id')->unsigned()->nullable();
             $table->foreign('administrador_id')->references('id')->on('users');
-            $table->integer('pedido_id')->unsigned()->nullable();
-            $table->foreign('pedido_id')->references('id')->on('pedidos');
-
+            $table->string('photo_url');
         });
     }
 
