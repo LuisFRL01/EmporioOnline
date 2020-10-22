@@ -35,7 +35,6 @@ class UserFactory extends Factory
             'numeroResidencia' => $this->faker->buildingNumber,
             'bairro' => $this->faker->cityPrefix,
             'cep' => 55 . rand(000000,999999),
-            'tipo' => 'user',
             'remember_token' => Str::random(10),
         ];
     }
