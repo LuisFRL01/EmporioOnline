@@ -42,21 +42,16 @@
                         <label><input type="radio" id="estado1" name="estado" value="1" checked="true"> Novo </label>
                         <label><input type="radio" id="estado2" name="estado" value="0"> Usado</label>
                     </div>
-<<<<<<< HEAD
-
-                    <div class="mt-3">
-                        <select
-                            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="categoria", name="categoria">
-                            @foreach($categorias as $categoria)
-                                <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
-                            @endforeach
-
-                        </select>
+                    
+                    <div class="m-5">
+                        <select name="categoriaMenu" id="categoriaMenu" class="bg-white border appearance-none border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                            <option>Categoria</option>
+                              @foreach($categorias as $categoria)
+                                  <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
+                              @endforeach
+                          </select>
                     </div>
 
-
-=======
                     <div class="mt-3 ml-3">
                         <div class="card-body">
                             <div class="row">
@@ -68,7 +63,6 @@
                             </div>  
                         </div>
                     </div>
->>>>>>> pedido-branch
                     <br>
                     <x-jet-button type="submit" class="ml-0" name="cadastrar">
                         {{ __('Cadastrar') }}

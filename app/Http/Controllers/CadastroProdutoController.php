@@ -28,6 +28,15 @@ class cadastroProdutoController extends Controller
             $produto->preco = $request->preco;
             $produto->descricao = $request->descricao;
             $produto->estado = $request->estado;
+            
+            $categoria = $request->input('categoriaMenu');
+            if ($categoria != 'Categoria') {
+                $produto->categoria_id = $categoria;
+            } else {
+                throw new ValidationException('Escolha uma categoria');
+            }
+
+
             $produto->categoria_id = $request->categoria;
             $name = $request->file('photo_url')->getClientOriginalName();
             $path = $request->file('photo_url')->storeAs(
