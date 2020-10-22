@@ -20,9 +20,11 @@ use App\Http\Controllers\ListaUsuariosController;
 use App\Http\Controllers\PesquisaProdutoController;
 use App\Http\Controllers\ResolveDenunciaController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\RemoverPedidoController;
+use App\Http\Controllers\FinalizarPedidoController;
 
 Route::middleware(['auth:sanctum', 'verified', 'check.user'])->group(function () {
-    
+
     Route::get('/cadastrarProduto', [cadastroProdutoController::class, 'preparar']);
 
     Route::post('/cadastrarProduto', [cadastroProdutoController::class, 'cadastrar'])->name('cadastrarProduto');
@@ -41,7 +43,7 @@ Route::middleware(['auth:sanctum', 'verified', 'check.user'])->group(function ()
 });
 
 Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->group(function () {
-    
+
     Route::get('/cadastroCategoria', [CadastroCategoriaController::class, 'show']);
 
     Route::post('/cadastroCategoria', [CadastroCategoriaController::class, 'cadastrar'])->name('cadastroCategoria');
@@ -65,7 +67,11 @@ Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->group(funct
 
 Route::get('/produto/{id}', [ExibeProdutoController::class, 'show']);
 
-Route::post('/adicionar', [AdicionarPedidoController::class, 'adicionar'])->name('adicionar');
+Route::post('/adicionarPedido', [AdicionarPedidoController::class, 'adicionar'])->name('adicionarPedido');
+
+Route::get('/removerPedido/{produto_id}', [RemoverPedidoController::class, 'remover'])->name('removerPedido');
+
+Route::get('/finalizarPedido', [FinalizarPedidoController::class, 'finalizar'])->name('finalizarPedido');
 
 Route::get('/pedido', [ExibePedidoController::class, 'exibe'])->name('pedido');
 

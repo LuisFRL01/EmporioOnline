@@ -23,6 +23,7 @@ class AdicionarPedidoController extends Controller
             $produto = \App\Models\Produto::find($id);
             $dados['preco'] = $produto->preco;
             $dados['produto'] = $produto->nome;
+            $dados['subtotal'] = $produto->preco * $request->quantidade;
             $pedido[$id] = $dados;
         }
 

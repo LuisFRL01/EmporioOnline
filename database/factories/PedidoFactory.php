@@ -23,12 +23,9 @@ class PedidoFactory extends Factory
     public function definition()
     {
         $users = DB::select("select * from users");
-        $valor = rand(1, 1000);
-        $frete = rand(1, 80);
+        $total = rand(1, 1000);
         return [
-            'valor' => $valor,
-            'frete' => $frete,
-            'total' => $valor + $frete,
+            'total' => $total,
             'data' => date('d/m/Y H:i'),
             'user_id' => rand(1, count($users))
         ];

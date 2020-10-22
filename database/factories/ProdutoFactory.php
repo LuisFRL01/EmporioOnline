@@ -39,6 +39,7 @@ class ProdutoFactory extends Factory
             'user_id' => rand(1, count($users)),
             'categoria_id' => rand(1, count($categorias)),
             'photo_url' => $faker->placeholder('1024x768', 'png')
+
         ];
     }
 }

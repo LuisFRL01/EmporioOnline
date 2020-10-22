@@ -20,13 +20,15 @@
 
                     <div>
                         <x-jet-label class="mt-3" value="{{ __('Quantidade') }}"/>
-                        <x-jet-input class="block mt-1 w-full" type="number" name="quantidade" :value="old('quantidade')" required
+                        <x-jet-input class="block mt-1 w-full" type="number" name="quantidade"
+                                     :value="old('quantidade')" required
                                      autofocus/>
                     </div>
 
                     <div>
                         <x-jet-label class="mt-3" value="{{ __('Preço') }}"/>
-                        <x-jet-input class="block mt-1 w-full" type="number" step="any" name="preco" :value="old('preco')" required
+                        <x-jet-input class="block mt-1 w-full" type="number" step="any" name="preco"
+                                     :value="old('preco')" required
                                      autofocus/>
                     </div>
 
@@ -40,6 +42,7 @@
                         <label><input type="radio" id="estado1" name="estado" value="1" checked="true"> Novo </label>
                         <label><input type="radio" id="estado2" name="estado" value="0"> Usado</label>
                     </div>
+                    
                     <div class="m-5">
                         <select name="categoriaMenu" id="categoriaMenu" class="bg-white border appearance-none border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                             <option>Categoria</option>
@@ -48,6 +51,7 @@
                               @endforeach
                           </select>
                     </div>
+
                     <div class="mt-3 ml-3">
                         <div class="card-body">
                             <div class="row">

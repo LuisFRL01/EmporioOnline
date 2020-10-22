@@ -11,13 +11,13 @@
                     <div class="w-full max-w-lg mx-auto mt-5 md:ml-8 md:mt-0 md:w-1/2">
                         <div align="right">
                             <form action="/pedido" method="get">
-                                <button 
-                                @auth 
+                                <button
+                                @auth
                                     @if (Auth::user()->tipo == 'admin')
                                         disabled='disabled'
                                     @endif
-                                @else 
-                                    class="pointer-events-none" 
+                                @else
+                                    class="pointer-events-none"
                                 @endif
                                 class="mx-2 text-gray-600 border rounded-md p-2 hover:bg-gray-200 focus:outline-none">
                                     <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -45,20 +45,20 @@
                             @endif
                         </h3>
                         <hr class="my-3">
-                        <form action="{{ route('adicionar') }}" method="post">
+                        <form action="{{ route('adicionarPedido') }}" method="post">
                             @csrf
                             <input type="hidden" name="produto_id" value="{{ $produto->id }}"/>
                             <h3 class="text-gray-800 text-lg" for="count">
                                 Quantidade Desejada: <input type="number" name="quantidade" min='1' max='10' value='1'/>
                             </h3>
                             <div class="flex items-center mt-3">
-                                <button 
-                                @auth 
+                                <button
+                                @auth
                                     @if (Auth::user()->tipo == 'admin')
                                         disabled='disabled'
                                     @endif
-                                @else 
-                                    disabled='disabled' 
+                                @else
+                                    disabled='disabled'
                                 @endif
                                 class="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
                                     Compre agora
@@ -66,14 +66,14 @@
                             </div>
                         </form>
                         <div class="mt-3">
-                            <a 
-                            @auth 
+                            <a
+                            @auth
                                 @if (Auth::user()->tipo == 'admin')
-                                    class="pointer-events-none" 
+                                    class="pointer-events-none"
                                 @endif
-                            @else 
-                                class="pointer-events-none" 
-                            @endif  
+                            @else
+                                class="pointer-events-none"
+                            @endif
                             href="/denunciaAnuncio/{{ $produto->id }}" class="text-blue-600">Denunciar Anúncio</a>
                         </div>
                         @auth

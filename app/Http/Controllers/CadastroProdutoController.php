@@ -36,15 +36,15 @@ class cadastroProdutoController extends Controller
                 throw new ValidationException('Escolha uma categoria');
             }
 
-            $name = $request->file('photo_url')->getClientOriginalName();
 
+            $produto->categoria_id = $request->categoria;
+            $name = $request->file('photo_url')->getClientOriginalName();
             $path = $request->file('photo_url')->storeAs(
                 'produtosImg',
                 $name
             );
 
             $produto->photo_url = $path;
-
             Auth::user()->produtos()->save($produto);
 
             return redirect('/listarProdutos');

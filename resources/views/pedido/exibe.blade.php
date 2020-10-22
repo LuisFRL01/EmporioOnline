@@ -41,14 +41,16 @@
                     <h4 class="text-lg text-black font-medium">Master: xxxxxxxxxxxxxxx</h4>
                 </div>
                 <div class="flex items-center justify-between mt-8">
-                    <button
-                        class="flex items-center px-3 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                        <span>Comprar</span>
-                        <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                             stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </button>
+                    <form action="{{ route('finalizarPedido') }}" method="get">
+                        <button
+                            class="flex items-center px-3 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <span>Comprar</span>
+                            <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -57,7 +59,8 @@
                 <div class="border rounded-md max-w-md w-full px-4 py-3">
                     @foreach (Session::get('itens') as $k => $item )
                         <div class="flex items-center justify-between">
-                            <h3 class="text-gray-700 font-medium">Subtotal: <b>{{$item['preco'] * $item['quantidade']}} R$</b></h3>
+                            <h3 class="text-gray-700 font-medium">Subtotal: <b>{{$item['preco'] * $item['quantidade']}}
+                                    R$</b></h3>
                         </div>
                         <div class="flex justify-between mt-6">
                             <div class="flex">
@@ -74,6 +77,7 @@
                             <span class="text-gray-600">R${{$item['preco']}}</span>
                         </div>
                         <br>
+                        <a href="{{ route('removerPedido', ['produto_id' => $k]) }}">Remover</a>
                     @endforeach
                 </div>
             </div>

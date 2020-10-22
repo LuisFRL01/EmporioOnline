@@ -29,6 +29,7 @@
                             <th class="px-4 py-2">Quantidade</th>
                             <th class="px-4 py-2">Preço</th>
                             <th class="px-4 py-2">Estado</th>
+                            <th class="px-4 py-2">Categoria</th>
                         </tr>
                         </thead>
                         <tbody>
