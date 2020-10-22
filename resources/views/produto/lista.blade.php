@@ -30,6 +30,7 @@
                             <th class="px-4 py-2">Preço</th>
                             <th class="px-4 py-2">Estado</th>
                             <th class="px-4 py-2">Categoria</th>
+                            <th class="px-4 py-2">Ações</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -53,6 +54,9 @@
                                     @else
                                         Usado
                                     @endif
+                                </td>
+                                <td class="border px-4 py-2">
+                                    {{$produto->categoria->nome}}
                                 </td>
                                 <td align="center" class="border px-4 py-2">
                                     <form action="/editarProduto/{{$produto->id}}" method="get">

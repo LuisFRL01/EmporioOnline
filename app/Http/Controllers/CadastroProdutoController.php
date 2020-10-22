@@ -29,13 +29,6 @@ class cadastroProdutoController extends Controller
             $produto->descricao = $request->descricao;
             $produto->estado = $request->estado;
 
-            $categoria = $request->input('categoriaMenu');
-            if ($categoria != 'Categoria') {
-                $produto->categoria_id = $categoria;
-            } else {
-                throw new ValidationException('Escolha uma categoria');
-            }
-
             $name = $request->file('photo_url')->getClientOriginalName();
             $path = $request->file('photo_url')->storeAs(
                 'produtosImg',
@@ -43,6 +36,14 @@ class cadastroProdutoController extends Controller
             );
 
             $produto->photo_url = $path;
+
+            $categoria = $request->input('categoriaMenu');
+            if ($categoria != 'Categoria') {
+                $produto->categoria_id = $categoria;
+            } else {
+                throw new ValidationException('Escolha uma categoria');
+            }
+
             Auth::user()->produtos()->save($produto);
 
             return redirect('/listarProdutos');

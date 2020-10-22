@@ -25,7 +25,11 @@ class Categoria extends Model
     	return $this->hasMany('App\Models\Categoria');
     }
 
+    public function produtos(){
+        return $this->hasMany('App\Models\Produto');
+    }
+
     public function administrador(){
-    	return $this->belongsTo('App\Models\User');      
+    	return $this->belongsTo('App\Models\User');
     }
 }

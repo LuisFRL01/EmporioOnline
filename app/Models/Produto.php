@@ -42,7 +42,7 @@ class Produto extends Model
     }
 
     public function categoria(){
-    	return $this->hasOne('App\Models\Categoria');
+    	return $this->belongsTo('App\Models\Categoria');
     }
 
     public function caracteristicas(){
