@@ -23,15 +23,19 @@
             <header class="bg-blue-500">
                 @if (Route::has('login'))
                     <div class="hidden ml-6 pt-2 sm:block">
+                        <div style="display: flex; justify-content: space-around">
+                        <a href="{{ url('/') }}" class="ml-4 text-sm text-black underline">Pagina Inicial</a>
                         @auth
-                            <a href="{{ url('dashboard') }}" class="text-sm text-black underline">Home</a>
+                            <a href="{{ url('pedidos') }}" class="text-sm text-black underline">Pedidos</a>
+                            <a href="{{ url('dashboard') }}" class="text-sm text-black underline">Perfil</a>
+                        </div>
                         @else
                             <a href="{{ route('login') }}" class="text-sm text-black underline">Login</a>
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}" class="ml-4 text-sm text-black underline">Register</a>
                             @endif
                         @endif
-                        <a href="{{ url('/') }}" class="ml-4 text-sm text-black underline">Pagina Inicial</a>
+
                     </div>
                 @endif
                 <div class="container mx-auto px-6 pb-3">

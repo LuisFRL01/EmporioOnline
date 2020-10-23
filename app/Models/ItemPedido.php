@@ -14,6 +14,6 @@ class ItemPedido extends Model
         return $this->belongsTo('\App\Models\ItemPedido');
     }
     public function produto() {
-        return $this->belongsTo('\App\Models\ItemPedido', 'produto_id');
+        return $this->hasOne('\App\Models\ItemPedido', 'produto_id');
     }
 }
