@@ -27,7 +27,7 @@ class FinalizarPedidoController extends Controller
 
                 $this->alterarProduto($k, $dados['quantidade']);
 
-                $total += $dados['subtotal'];
+                $total += $dados['preco'] * $dados['quantidade'];
             }
             if (!empty($itens)) {
                 $pedido = \App\Models\Pedido::create([

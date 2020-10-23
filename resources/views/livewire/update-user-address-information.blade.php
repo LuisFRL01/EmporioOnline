@@ -5,7 +5,7 @@
         </x-slot>
     
         <x-slot name="description">
-            {{ __('Atualize as nformações do seu endereço') }}
+            {{ __('Atualize as informações do seu endereço') }}
         </x-slot>
     
         <x-slot name="form">

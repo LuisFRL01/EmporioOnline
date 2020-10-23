@@ -7,6 +7,8 @@ use App\Validator\ProdutoValidator;
 use App\Validator\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class editarProdutoController extends Controller
 {
@@ -35,11 +37,14 @@ class editarProdutoController extends Controller
             $produto->estado = $request->estado;
             $produto->user_id = $request->user_id;
 
-            $name = $request->file('photo_url')->getClientOriginalName();
+            Storage::delete($produto->photo_url);
+
+            $nomeOrginal = $request->file('photo_url')->getClientOriginalName();
+            $nome = str_replace(" ", "", $nomeOrginal);
 
             $path = $request->file('photo_url')->storeAs(
                 'produtosImg',
-                $name
+                $nome
             );
 
             $produto->photo_url = $path;
