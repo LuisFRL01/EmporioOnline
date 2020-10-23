@@ -1,12 +1,13 @@
 <x-app-layout-produto>
     <br>
     <h2 style="font-size: 32px" align="center">Pedidos</h2>
-    @foreach ($pedidos as $pedido)
-        <div class="container">
+
+    <div class="m-6">
+        <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 mt-6">
+            @foreach ($pedidos as $pedido)
             <div class="w-full mb-8 flex justify-center order-2 lg:mb-1 lg:order-1">
                 <div class="flex justify-center lg:justify-end">
                     <div class="border rounded-md max-w-md w-full px-4 py-3">
-
                         <div class="flex items-center justify-between">
                             <h3 class="text-gray-700 font-medium">Pedido ID: <b>{{$pedido->id}}</b></h3>
                             <span class="text-gray-700 mx-2">Total: <b>{{$pedido->total}}</b></span>
@@ -40,8 +41,10 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
-    @endforeach
+    </div>
+
     <div class="py-3">
         <div class="bg-white px-4 py-5 justify-between border-t border-gray-200 sm:px-6">
             {{ $pedidos->links() }}
