@@ -16,16 +16,21 @@
                     <table class="table-auto">
                         <thead>
                         <tr>
+                            <th class="px-4 py-2">ID</th>
                             <th class="px-4 py-2">Nome</th>
                             <th class="px-4 py-2">Descrição</th>
                             <th class="px-4 py-2">Quantidade</th>
                             <th class="px-4 py-2">Preço</th>
                             <th class="px-4 py-2">Estado</th>
+                            <th class="px-4 py-2">Ativo</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($produtos as $produto)
                             <tr>
+                                <td class="border px-4 py-2">
+                                    {{$produto->id}}
+                                </td>
                                 <td class="border px-4 py-2">
                                     {{$produto->nome}}
                                 </td>
@@ -45,8 +50,15 @@
                                         Usado
                                     @endif
                                 </td>
+                                <td class="border px-4 py-2">
+                                    @if($produto->ativo)
+                                        Sim
+                                    @else
+                                        Não
+                                    @endif
+                                </td>
                                 <td align="center" class="border px-4 py-2">
-                                    <form action="/deletarProduto/{{$produto->id}}" onclick="return confirm('Você Tem Certeza?')">
+                                    <form action="/desativaProduto/{{$produto->id}}" onclick="return confirm('Você Tem Certeza?')">
                                         <button
                                             class="mx-2 text-gray-600 border rounded-md p-2 hover:bg-gray-200 focus:outline-none">
                                             <svg class="h-5 w-5" fill="none" stroke-linecap="round"

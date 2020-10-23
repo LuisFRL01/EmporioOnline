@@ -29,10 +29,12 @@ class cadastroProdutoController extends Controller
             $produto->descricao = $request->descricao;
             $produto->estado = $request->estado;
 
-            $name = $request->file('photo_url')->getClientOriginalName();
+            $nomeOrginal = $request->file('photo_url')->getClientOriginalName();
+            $nome = str_replace(" ", "", $nomeOrginal);
+
             $path = $request->file('photo_url')->storeAs(
                 'produtosImg',
-                $name
+                $nome
             );
 
             $produto->photo_url = $path;

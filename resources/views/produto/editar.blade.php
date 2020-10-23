@@ -46,6 +46,14 @@
                         <label><input type="radio" id="estado1" name="estado" value="1" checked="true"> Novo </label>
                         <label><input type="radio" id="estado2" name="estado" value="0"> Usado</label>
                     </div>
+                    <div class="m-5">
+                        <select name="categoriaMenu" id="categoriaMenu" class="bg-white border appearance-none border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                            <option>Categoria</option>
+                              @foreach($categorias as $categoria)
+                                  <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
+                              @endforeach
+                          </select>
+                    </div>
                     <div class="mt-3 ml-3">
                         <div class="card-body">
                             <div class="row">
