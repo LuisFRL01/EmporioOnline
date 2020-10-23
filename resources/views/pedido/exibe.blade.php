@@ -1,15 +1,16 @@
 <x-app-layout-produto>
     <div class="flex flex-col lg:flex-row mt-8 mb-8">
         <div class="ml-6">
-            <h3 class="text-black text-2xl font-medium">Checkout</h3>
+            <h3 class="text-black text-2xl font-medium">Finalização</h3>
             <div>
-                <h4 class="text-sm text-black mt-3 font-medium">Delivery method</h4>
+                <h4 class="text-sm text-black mt-3 font-medium">Metodo de Entrega</h4>
                 <div class="mt-6">
+                    <form>
                     <button
                         class="flex items-center justify-between w-full bg-white rounded-md border-2 border-blue-500 p-4 focus:outline-none">
                         <label class="flex items-center">
-                            <input type="radio" class="form-radio h-5 w-5 text-blue-600" checked><span
-                                class="ml-2 text-sm text-gray-700">MS Delivery</span>
+                            <input type="radio" class="form-radio h-5 w-5 text-blue-600" name="frete" id="frete" value=18 checked><span
+                                class="ml-2 text-sm text-gray-700">PAC</span>
                         </label>
 
                         <span class="text-gray-600 text-sm">$18</span>
@@ -17,8 +18,8 @@
                     <button
                         class="mt-6 flex items-center justify-between w-full bg-white rounded-md border p-4 focus:outline-none">
                         <label class="flex items-center">
-                            <input type="radio" class="form-radio h-5 w-5 text-blue-600"><span
-                                class="ml-2 text-sm text-gray-700">DC Delivery</span>
+                            <input type="radio" class="form-radio h-5 w-5 text-blue-600" name="frete" id="frete" value=26><span
+                                class="ml-2 text-sm text-gray-700">Sedex</span>
                         </label>
 
                         <span class="text-gray-600 text-sm">$26</span>
@@ -47,8 +48,9 @@
                     @endif
                 </h4>
                 <div class="flex items-center justify-between mt-8">
-                    <form action="{{ route('finalizarPedido') }}" method="get">
-                        <button @if (!Auth::user()->cartao) disabled='disabled' @endif
+
+                        <button formaction="{{ route('finalizarPedido') }}"
+                            @if (!Auth::user()->cartao) disabled='disabled' @endif
                             class="flex items-center px-3 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
                             <span>Comprar</span>
                             <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
