@@ -53,6 +53,9 @@ class FinalizarPedidoController extends Controller
         if($produto->quantidade >= $quantidade){
             $produto->quantidade -= $quantidade;
             $produto->update();
+            return true;
+        } else {
+            return false;
         }
 
     }

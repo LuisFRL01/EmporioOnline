@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class AdicionarPedidoController extends Controller
@@ -16,11 +17,17 @@ class AdicionarPedidoController extends Controller
         $id = $request->produto_id;
 
         if(array_key_exists($id, $pedido)) {
-            $pedido[$id]['quantidade'] += $request->quantidade;
+            $produto = Produto::find($id);
+            if(($pedido[$id]['quantidade'] + $request->quantidade) <= $produto->quantidade){
+                $pedido[$id]['quantidade'] += $request->quantidade;
+            } else{
+                $pedido[$id]['quantidade'] = $produto->quantidade;
+            }
+
         } else {
             $dados = array();
             $dados['quantidade'] = $request->quantidade;
-            $produto = \App\Models\Produto::find($id);
+            $produto = Produto::find($id);
             $dados['preco'] = $produto->preco;
             $dados['produto'] = $produto->nome;
             $dados['subtotal'] = $produto->preco * $request->quantidade;
