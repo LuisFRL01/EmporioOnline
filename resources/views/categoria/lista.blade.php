@@ -1,5 +1,3 @@
-@inject('listaController', 'App\Http\Controllers\ListaCategoriasController')
-
 <x-app-layout>
     <x-slot name="header">
         <h1 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -26,7 +24,7 @@
                                 </td>
                                 <td class="border px-4 py-2">
                                     @if($categoria->categoria_id != null)
-                                        {{ $listaController::returnCategoriaPai($categoria->categoria_id) }}
+                                        {{\App\Models\Categoria::find($categoria->categoria_id)->nome}}
                                     @else
                                         Sem categoria pai
                                     @endif

@@ -10,9 +10,4 @@ class ListaCategoriasController extends Controller
         $categorias = DB::table('categorias')->paginate(15);
         return view('categoria/lista', ['categorias' => $categorias]);
     }
-
-    public static function returnCategoriaPai($id){
-        $categoriaPai = DB::table('categorias')->where('id', $id)->value('nome');
-        return $categoriaPai;
-    }
 }
