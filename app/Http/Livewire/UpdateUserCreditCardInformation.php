@@ -33,7 +33,7 @@ class UpdateUserCreditCardInformation extends Component
 
             Validator::make($input, [
                 'cartao' => ['required', 'integer', 'digits:16'],
-            ], ['O cartão deve ter 11 dígitos'])->validate('update');
+            ], ['O cartão deve ter 16 dígitos'])->validate('update');
 
             $this->user->forceFill([
                 'cartao' => $this->cartao,

@@ -1,5 +1,3 @@
-@inject('listaController', 'App\Http\Controllers\ListaDenunciaController')
-
 <x-app-layout>
     <x-slot name="header">
         <div style="position: relative;">
@@ -33,10 +31,10 @@
                                     {{$denuncia->mensagem}}
                                 </td>
                                 <td class="border px-4 py-2">
-                                    {{ $listaController::returnUsuarioNome($denuncia->user_id) }}
+                                    {{\App\Models\User::find($denuncia->user_id)->name}}
                                 </td>
                                 <td class="border px-4 py-2">
-                                    {{ $listaController::returnNomeProduto($denuncia->produto_id) }}
+                                    {{\App\Models\Produto::find($denuncia->produto_id)->nome}}
                                 </td>
                                 <td class="border px-4 py-2">
                                     {{ $denuncia->produto_id }}

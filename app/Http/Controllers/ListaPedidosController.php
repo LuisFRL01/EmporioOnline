@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pedido;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ListaPedidosController extends Controller
 {
     public function listar()
     {
-        $pedidos = Pedido::where('user_id', '=', Auth::user()->id)->orderBy('id', 'desc')->paginate(5);
+        $pedidos = Pedido::where('user_id', '=', Auth::user()->id)->orderBy('id', 'desc')->paginate(6);
         return view('pedido/lista', ['pedidos' => $pedidos]);
     }
 
