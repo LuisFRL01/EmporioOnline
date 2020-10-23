@@ -6,16 +6,16 @@
                 <h4 class="text-sm text-black mt-3 font-medium">Metodo de Entrega</h4>
                 <div class="mt-6">
                     <form>
-                    <button
-                        class="flex items-center justify-between w-full bg-white rounded-md border-2 border-blue-500 p-4 focus:outline-none">
+                    <label
+                        class="flex items-center justify-between w-full bg-white rounded-md border-2 p-4 focus:outline-none">
                         <label class="flex items-center">
                             <input type="radio" class="form-radio h-5 w-5 text-blue-600" name="frete" id="frete" value=18 checked><span
                                 class="ml-2 text-sm text-gray-700">PAC</span>
                         </label>
 
                         <span class="text-gray-600 text-sm">$18</span>
-                    </button>
-                    <button
+                    </label>
+                    <label
                         class="mt-6 flex items-center justify-between w-full bg-white rounded-md border p-4 focus:outline-none">
                         <label class="flex items-center">
                             <input type="radio" class="form-radio h-5 w-5 text-blue-600" name="frete" id="frete" value=26><span
@@ -23,7 +23,7 @@
                         </label>
 
                         <span class="text-gray-600 text-sm">$26</span>
-                    </button>
+                    </label>
                 </div>
             </div>
             <div>
