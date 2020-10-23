@@ -36,13 +36,19 @@
                 </div>
             </div>
             <div>
-                <h4 class="text-lg text-black font-medium my-5">Cartão</h4>
-                <div class="mt-6">
-                    <h4 class="text-lg text-black font-medium">Master: xxxxxxxxxxxxxxx</h4>
-                </div>
+                <h4 class="text-lg text-black font-medium my-5">Cartão:
+                    @if (Auth::user()->cartao)
+                        {{Auth::user()->cartao}}
+                    @else
+                        <h3 class="text-red-700 text-lg" for="count">
+                            Adicione um cartão para prosseguir com a compra
+                            <a href="/user/profile" class="text-red-700 text-lg underline">Adicionar cartão no perfil</a>
+                        </h3>
+                    @endif
+                </h4>
                 <div class="flex items-center justify-between mt-8">
                     <form action="{{ route('finalizarPedido') }}" method="get">
-                        <button
+                        <button @if (!Auth::user()->cartao) disabled='disabled' @endif
                             class="flex items-center px-3 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
                             <span>Comprar</span>
                             <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"

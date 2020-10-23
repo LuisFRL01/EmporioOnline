@@ -3,7 +3,6 @@
 use App\Http\Controllers\CadastroCategoriaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cadastroProdutoController;
-use App\Http\Controllers\DeletaCategoriaController;
 use App\Http\Controllers\deletarProdutoController;
 use App\Http\Controllers\DesativaUsuarioController;
 use App\Http\Controllers\editarProdutoController;

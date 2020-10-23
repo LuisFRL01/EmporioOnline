@@ -36,6 +36,7 @@ class UserFactory extends Factory
             'bairro' => $this->faker->cityPrefix,
             'cep' => 55 . rand(000000,999999),
             'remember_token' => Str::random(10),
+            'cartao' => rand(1000000000000000, 9999999999999999),
         ];
     }
 }
