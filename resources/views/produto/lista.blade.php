@@ -20,7 +20,7 @@
     <div class="container">
         <div class="py-5 px-20">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-20">
-                @if(!empty($produtos))
+                @if(!empty($produtos[0]))
                     <table class="table-auto">
                         <thead>
                         <tr>
