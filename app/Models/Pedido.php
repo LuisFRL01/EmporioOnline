@@ -28,7 +28,7 @@ class Pedido extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function ItemPedidos()
+    public function itemPedidos()
     {
         return $this->hasMany('App\Models\ItemPedido');
     }

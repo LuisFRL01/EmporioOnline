@@ -22,6 +22,7 @@ use App\Http\Controllers\ResolveDenunciaController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\RemoverPedidoController;
 use App\Http\Controllers\FinalizarPedidoController;
+use App\Http\Controllers\ListaPedidosController;
 
 Route::middleware(['auth:sanctum', 'verified', 'check.user'])->group(function () {
 
@@ -40,6 +41,17 @@ Route::middleware(['auth:sanctum', 'verified', 'check.user'])->group(function ()
     Route::get('/denunciaAnuncio/{id}', [DenunciaAnuncioController::class, 'show']);
 
     Route::post('/denunciaAnuncio', [DenunciaAnuncioController::class, 'sendDenuncia'])->name('denunciaAnuncio');
+
+    Route::post('/adicionarPedido', [AdicionarPedidoController::class, 'adicionar'])->name('adicionarPedido');
+
+    Route::get('/removerPedido/{produto_id}', [RemoverPedidoController::class, 'remover'])->name('removerPedido');
+
+    Route::get('/finalizarPedido', [FinalizarPedidoController::class, 'finalizar'])->name('finalizarPedido');
+
+    Route::get('/pedido', [ExibePedidoController::class, 'exibe'])->name('pedido');
+
+    Route::get('/pedidos', [ListaPedidosController::class, 'listar'])->name('pedidos');
+
 });
 
 Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->group(function () {
@@ -65,15 +77,7 @@ Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->group(funct
     Route::get('/resolveDenuncia/{id}', [ResolveDenunciaController::class, 'resolver']);
 });
 
-Route::get('/produto/{id}', [ExibeProdutoController::class, 'show']);
-
-Route::post('/adicionarPedido', [AdicionarPedidoController::class, 'adicionar'])->name('adicionarPedido');
-
-Route::get('/removerPedido/{produto_id}', [RemoverPedidoController::class, 'remover'])->name('removerPedido');
-
-Route::get('/finalizarPedido', [FinalizarPedidoController::class, 'finalizar'])->name('finalizarPedido');
-
-Route::get('/pedido', [ExibePedidoController::class, 'exibe'])->name('pedido');
+Route::get('/produto/{id}', [ExibeProdutoController::class, 'show'])->name('produto');
 
 Route::get('/pesquisaProduto', [PesquisaProdutoController::class, 'show'])->name('pesquisaProduto');
 
