@@ -14,7 +14,7 @@ class Categoria extends Model
     ];
 
     public static $rules = [
-        'nome' =>'required|min:4|max:20|unique:categorias'
+        'nome' =>'required|min:4|max:20'
     ];
 
     public static $messages = [

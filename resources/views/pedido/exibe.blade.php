@@ -7,7 +7,7 @@
                 <div class="mt-6">
                     <form>
                     <label
-                        class="flex items-center justify-between w-full bg-white rounded-md border-2 p-4 focus:outline-none">
+                        class="flex items-center justify-between w-40 bg-white rounded-md border-2  p-4 focus:outline-none">
                         <label class="flex items-center">
                             <input type="radio" class="form-radio h-5 w-5 text-blue-600" name="frete" id="frete" value=18 checked><span
                                 class="ml-2 text-sm text-gray-700">PAC</span>
@@ -16,12 +16,11 @@
                         <span class="text-gray-600 text-sm">$18</span>
                     </label>
                     <label
-                        class="mt-6 flex items-center justify-between w-full bg-white rounded-md border p-4 focus:outline-none">
+                        class="mt-6 flex items-center justify-between w-40 bg-white rounded-md border p-4 focus:outline-none">
                         <label class="flex items-center">
                             <input type="radio" class="form-radio h-5 w-5 text-blue-600" name="frete" id="frete" value=26><span
                                 class="ml-2 text-sm text-gray-700">Sedex</span>
                         </label>
-
                         <span class="text-gray-600 text-sm">$26</span>
                     </label>
                 </div>

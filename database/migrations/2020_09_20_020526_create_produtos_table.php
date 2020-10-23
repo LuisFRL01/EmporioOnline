@@ -30,6 +30,7 @@ class CreateProdutosTable extends Migration
             $table->integer('administrador_id')->unsigned()->nullable();
             $table->foreign('administrador_id')->references('id')->on('users');
             $table->string('photo_url');
+            $table->boolean('ativo')->default(1);
         });
     }
 

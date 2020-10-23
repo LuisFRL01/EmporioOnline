@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Produto;
 use App\Validator\ProdutoValidator;
 use App\Validator\ValidationException;
@@ -16,9 +17,10 @@ class editarProdutoController extends Controller
     public function editar(Request $request)
     {
         $produto = Produto::find($request->id);
+        $categorias = Categoria::all();
 
         if (Gate::allows('update-produto', $produto)) {
-            return view('produto/editar', ['produto' => $produto]);
+            return view('produto/editar', ['produto' => $produto, 'categorias' => $categorias]);
         } else if (Gate::denies('update-produto', $produto)) {
             abort('403', 'Não Autorizado');
         }
@@ -48,6 +50,13 @@ class editarProdutoController extends Controller
             );
 
             $produto->photo_url = $path;
+
+            $categoria = $request->input('categoriaMenu');
+            if ($categoria != 'Categoria') {
+                $produto->categoria_id = $categoria;
+            } else {
+                throw new ValidationException('Escolha uma categoria');
+            }
 
             $produto->update();
 

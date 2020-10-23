@@ -11,6 +11,7 @@ use App\Http\Controllers\ListaCategoriasController;
 use App\Http\Controllers\listarProdutosController;
 use App\Http\Controllers\AdicionarPedidoController;
 use App\Http\Controllers\DenunciaAnuncioController;
+use App\Http\Controllers\DesativaProdutoController;
 use App\Http\Controllers\EditaCategoriaController;
 use App\Http\Controllers\ExibePedidoController;
 use App\Http\Controllers\ListaDenunciaController;
@@ -68,6 +69,8 @@ Route::middleware(['auth:sanctum', 'verified', 'check.user.admin'])->group(funct
     Route::get('/listaUsuarios', [ListaUsuariosController::class, 'show'])->name('usuarios');
 
     Route::get('/desativaUsuario/{id}', [DesativaUsuarioController::class, 'desativar']);
+
+    Route::get('/desativaProduto/{id}', [DesativaProdutoController::class, 'desativar']);
 
     Route::get('/listaDenuncias', [ListaDenunciaController::class, 'show'])->name('denuncias');
 
