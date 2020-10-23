@@ -22,7 +22,7 @@
                             <div class="flex justify-between mt-2">
                                 <div class="flex">
                                     <img class="h-20 w-20 object-cover rounded"
-                                         src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
+                                         src={{\App\Models\Produto::find($item->produto_id)->photo_url}}
                                          alt="">
                                     <div class="mx-3">
                                         <h3 class="text-gray-700 mx-2">Preço: {{$item->preco}} <b>R$</b></h3>
