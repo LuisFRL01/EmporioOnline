@@ -16,14 +16,14 @@ class AdicionarPedidoController extends Controller
         $id = $request->produto_id;
 
         if(array_key_exists($id, $pedido)) {
-            $pedido[$id]['quantidade'] += $request->quantidade;
+            $pedido[$id]['quantidade'] += 1;
         } else {
             $dados = array();
             $dados['quantidade'] = $request->quantidade;
             $produto = \App\Models\Produto::find($id);
             $dados['preco'] = $produto->preco;
             $dados['produto'] = $produto->nome;
-            $dados['subtotal'] = $produto->preco * $request->quantidade;
+            $dados['subtotal'] = $produto->preco * $dados['quantidade'];
             $pedido[$id] = $dados;
         }
 
