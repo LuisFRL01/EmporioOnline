@@ -14,6 +14,10 @@
 
                 @livewire('update-user-address-information', ['user' => $user]) 
 
+                <x-jet-section-border />
+
+                @livewire('update-user-credit-card-information', ['user' => $user]) 
+
                 @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
                     <x-jet-section-border />
                 
