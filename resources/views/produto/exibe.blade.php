@@ -6,20 +6,20 @@
                     <div class="w-full h-64 md:w-1/2 lg:h-96">
                         <img class="h-full w-full rounded-md object-cover max-w-lg mx-auto"
                              src={{ asset($produto->photo_url)}}
-                             alt="ProdutoImg">
+                                 alt="ProdutoImg">
                     </div>
                     <div class="w-full max-w-lg mx-auto mt-5 md:ml-8 md:mt-0 md:w-1/2">
                         <div align="right">
                             <form action="/pedido" method="get">
                                 <button
-                                @auth
+                                    @auth
                                     @if (Auth::user()->tipo == 'admin')
-                                        disabled='disabled'
+                                    disabled='disabled'
                                     @endif
-                                @else
+                                    @else
                                     class="pointer-events-none"
-                                @endif
-                                class="mx-2 text-gray-600 border rounded-md p-2 hover:bg-gray-200 focus:outline-none">
+                                    @endif
+                                    class="mx-2 text-gray-600 border rounded-md p-2 hover:bg-gray-200 focus:outline-none">
                                     <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
                                          stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                         <path
@@ -49,37 +49,46 @@
                             @csrf
                             <input type="hidden" name="produto_id" value="{{ $produto->id }}"/>
                             <h3 class="text-gray-800 text-lg" for="count">
-                                Quantidade Desejada: <input type="number" name="quantidade" min='1' max='10' value='1'/>
+                                Quantidade Desejada: <input type="number" name="quantidade" min='1'
+                                                            max={{$produto->quantidade}} value='1'/>
                             </h3>
                             <div class="flex items-center mt-3">
                                 <button
-                                @auth
+                                    @auth
                                     @if (Auth::user()->tipo == 'admin')
-                                        disabled='disabled'
-                                    @endif
-                                @else
                                     disabled='disabled'
-                                @endif
-                                class="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
+                                    @endif
+                                    @if($produto->quantidade == 0)
+                                    disabled="disabled"
+                                    @endif
+                                    @else
+                                    disabled='disabled'
+                                    @endif
+                                    class="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
                                     Compre agora
                                 </button>
                             </div>
                         </form>
                         <div class="mt-3">
                             <a
-                            @auth
+                                @auth
                                 @if (Auth::user()->tipo == 'admin')
-                                    class="pointer-events-none"
-                                @endif
-                            @else
                                 class="pointer-events-none"
-                            @endif
-                            href="/denunciaAnuncio/{{ $produto->id }}" class="text-blue-600">Denunciar Anúncio</a>
+                                @endif
+                                @else
+                                class="pointer-events-none"
+                                @endif
+                                href="/denunciaAnuncio/{{ $produto->id }}" class="text-blue-600">Denunciar Anúncio</a>
                         </div>
                         @auth
                             @if (Auth::user()->tipo == 'admin')
                                 <h3 class="text-red-700 text-lg" for="count">
                                     Administradores não podem realizar compras.
+                                </h3>
+                            @endif
+                            @if($produto->quantidade == 0)
+                                <h3 class="text-red-700 text-lg" for="count">
+                                    A quantidade em estoque acabou
                                 </h3>
                             @endif
                         @else

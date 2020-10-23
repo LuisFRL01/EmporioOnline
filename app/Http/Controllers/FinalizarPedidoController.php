@@ -22,13 +22,14 @@ class FinalizarPedidoController extends Controller
                     'produto_id' => $k,
                     'quantidade' => $dados['quantidade'],
                     'preco' => $dados['preco'],
-                    'frete' => 100
+                    'frete' => $request->frete
                 ]);
 
                 $this->alterarProduto($k, $dados['quantidade']);
 
-                $total += $dados['preco'] * $dados['quantidade'];
+                $total += $dados['preco'] * $dados['quantidade'] + $request->frete;
             }
+
             if (!empty($itens)) {
                 $pedido = \App\Models\Pedido::create([
                     'user_id' => $usuario->id,
