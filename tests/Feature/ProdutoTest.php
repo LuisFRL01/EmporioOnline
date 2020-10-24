@@ -30,9 +30,6 @@ class ProdutoTest extends TestCase
         return $dados;
     }
 
-    //Por algum motivo, há uma chamada para getPhotoUrlAttribute que resulta em um erro.
-    //Não achamos esse metodo, nem onde ele é executado
-
 
     public function testCadastrarProduto(){
         $usuario = User::where('id', '=', '1')
