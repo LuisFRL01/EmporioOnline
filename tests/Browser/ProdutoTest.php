@@ -2,8 +2,9 @@
 
 namespace Tests\Browser;
 
+use App\Models\Categoria;
 use App\Models\User;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Log;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
@@ -29,21 +30,33 @@ class produtoTest extends DuskTestCase
 
     public function testCadastroProduto(){
         $this->testLogin();
+
+        $admin = User::factory()->make(['tipo' => 'admin']);
+        $admin->save();
+        $categoria = Categoria::factory()->make(['administrador_id' => $admin->id]);
+        $categoria['id'] = 1;
+        $categoria->save();
+
         $this->browse(function (Browser $browser)  {
             $browser->visit('/cadastrarProduto')
                 ->type('nome', 'AMD Intel Core I5')
                 ->type('quantidade', 10)
                 ->type('preco', 1000)
                 ->type('descricao', 'Melhor processador para publico gamer da AMD INTEL')
+                ->select('categoriaMenu', 1)
+                ->attach('photo_url', __DIR__.'/screenshots/img.jpg')
                 ->press('cadastrar')
                 ->assertPathIs('/listarProdutos');
         });
     }
+    
     public function testAlterarProduto(){
         $this->testCadastroProduto();
         $this->browse(function (Browser $browser)  {
-            $browser->clickLink('Editar')
-                ->type('nome', 'AMD Intel Core I7')
+            $browser->visit('/editarProduto/1')
+                ->type('nome', 'AMD Intel Core I5')
+                ->select('categoriaMenu', 1)
+                ->attach('photo_url', __DIR__.'/screenshots/img.jpg')
                 ->press('alterar')
                 ->assertPathIs('/listarProdutos');
         });

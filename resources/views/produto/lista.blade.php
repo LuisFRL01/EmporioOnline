@@ -61,7 +61,7 @@
                                 <td align="center" class="border px-4 py-2">
                                     <form action="/editarProduto/{{$produto->id}}" method="get">
                                         <button
-                                            class="mx-2 text-gray-600 border rounded-md p-2 hover:bg-gray-200 focus:outline-none">
+                                            id="editar" name="editar" class="mx-2 text-gray-600 border rounded-md p-2 hover:bg-gray-200 focus:outline-none">
                                             <svg class="h-5 w-5" fill="none" stroke-linecap="round"
                                                  stroke-linejoin="round"
                                                  stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">

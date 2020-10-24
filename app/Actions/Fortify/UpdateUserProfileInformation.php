@@ -46,6 +46,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                     'numTelefone' => $input['numTelefone']
                 ])->save();
             }
+
+            session()->flash('success', 'Os dados foram atualizados com sucesso');
         } catch (ValidationException $exception) {
             return back()->withInput()->withErrors([$exception->getMessage()]);
         }
