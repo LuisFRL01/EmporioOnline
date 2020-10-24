@@ -10,12 +10,10 @@ class Produto extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nome', 'quantidade', 'preco', 'data', 'descricao', 'estado', 'avaliacao', 'nota', 'ativo'
+        'nome', 'quantidade', 'preco', 'data', 'descricao', 'estado', 'avaliacao', 'nota', 'photo_url'
+
     ];
 
-    protected $appends = [
-        'photo_url',
-    ];
 
     public static $rules = [
         'nome' => 'required|min:4|max:50',

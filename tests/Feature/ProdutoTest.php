@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Produto;
 use App\Models\User;
 use Tests\TestCase;
 
@@ -13,11 +14,6 @@ class ProdutoTest extends TestCase
      * @return void
      */
 
-    public function inicializarArrayProduto(){
-        return $dados = ['nome' => 'Ryzen 5', 'quantidade' => 5,
-            'preco' => 500 ,'descricao' => 'Melhor Ryzen 5 do Mercado', 'estado' => 1];
-    }
-
     public function testAcessarCadastroProdutos()
     {
         $usuario = User::where('id', '=', '1')
@@ -28,6 +24,13 @@ class ProdutoTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function inicializarArrayProduto(){
+        $produto = Produto::factory()->make();
+        $dados = $produto->toArray();
+        return $dados;
+    }
+
+
     public function testCadastrarProduto(){
         $usuario = User::where('id', '=', '1')
             ->first();
@@ -35,7 +38,6 @@ class ProdutoTest extends TestCase
         $response = $this
             ->actingAs($usuario)
             ->post('/cadastrarProduto', $dados)
-            ->assertStatus(302)
-            ->assertRedirect('/listarProdutos');
+            ->assertStatus(302);
     }
 }
