@@ -11,7 +11,7 @@ class CreateProdutosTable extends Migration
      *
      * @return void
      */
-     //'nome', 'quantidade', 'preco', 'data', 'descricao', 'estado', 'avaliacao', 'nota',
+    //'nome', 'quantidade', 'preco', 'data', 'descricao', 'estado', 'avaliacao', 'nota',
     public function up()
     {
         Schema::create('produtos', function (Blueprint $table) {
@@ -23,11 +23,11 @@ class CreateProdutosTable extends Migration
             $table->string('descricao');
             $table->boolean('estado')->default(1);
             $table->double('nota')->nullable();
-            $table->integer('categoria_id')->unsigned();
+            $table->bigInteger('categoria_id')->unsigned();
             $table->foreign('categoria_id')->references('id')->on('categorias');
-            $table->integer('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('administrador_id')->unsigned()->nullable();
+            $table->bigInteger('administrador_id')->unsigned()->nullable();
             $table->foreign('administrador_id')->references('id')->on('users');
             $table->string('photo_url');
             $table->boolean('ativo')->default(1);

@@ -12,18 +12,18 @@ class CreateDenunciasTable extends Migration
      * @return void
      */
 
-     //'mensagem'
+    //'mensagem'
     public function up()
     {
         Schema::create('denuncias', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->mediumText('mensagem');
-            $table->integer('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('produto_id')->unsigned();
+            $table->bigInteger('produto_id')->unsigned();
             $table->foreign('produto_id')->references('id')->on('produtos');
-            $table->integer('administrador_id')->unsigned()->nullable();
+            $table->bigInteger('administrador_id')->unsigned()->nullable();
             $table->foreign('administrador_id')->references('id')->on('users');
             $table->boolean('resolvido')->default(0);
         });

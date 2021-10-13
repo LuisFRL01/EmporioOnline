@@ -38,7 +38,7 @@ class ProdutoFactory extends Factory
             'descricao' => "Produto de Qualidade Inigualavel no Mercado!",
             'user_id' => rand(1, count($users)),
             'categoria_id' => rand(1, count($categorias)),
-            'photo_url' => $faker->placeholder('1024x768', 'png')
+            'photo_url' => "https://via.placeholder.com/1024x768"
 
         ];
     }

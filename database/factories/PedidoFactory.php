@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Pedido;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
 
@@ -26,7 +27,7 @@ class PedidoFactory extends Factory
         $total = rand(1, 1000);
         return [
             'total' => $total,
-            'data' => date('d/m/Y H:i'),
+            'data' => Carbon::now(),
             'user_id' => rand(1, count($users))
         ];
     }

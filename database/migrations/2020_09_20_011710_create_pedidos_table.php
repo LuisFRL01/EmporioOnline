@@ -17,7 +17,7 @@ class CreatePedidosTable extends Migration
             $table->id();
             $table->double('total');
             $table->date('data');
-            $table->integer('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
