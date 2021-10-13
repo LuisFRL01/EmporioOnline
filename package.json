@@ -22,6 +22,6 @@
     },
     "dependencies": {
         "alpinejs": "^2.7.0",
-        "object-path": "^0.11.6"
+        "object-path": "^0.11.8"
     }
 }
